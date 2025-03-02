@@ -27,18 +27,20 @@ export default async function RootLayout({
 }>) {
 	const pages = await getPageHierarchy()
 
-	// console.log(pages[0].fields.children)
 	return (
 		<html lang="en">
 			<body>
 				<header className="bg-white shadow-sm">
-					<div className="max-w-7xl mx-auto px-4 py-4">
-						<Navigation pages={pages} />
-					</div>
+					{/* <div className="max-w-7xl mx-auto px-4 py-4"> */}
+					<Navigation pages={pages} />
+					{/* </div> */}
 				</header>
 				<main>
-					<div className="mb-[3.1rem] md:mb-16"></div>
-					<SecondNav pages={pages} />
+					<div>
+						<div className="mb-16 md:mb-[84px]"></div>
+						<SecondNav pages={pages} />
+					</div>
+
 					{children}
 				</main>
 			</body>

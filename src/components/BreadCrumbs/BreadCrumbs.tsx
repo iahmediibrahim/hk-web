@@ -2,11 +2,11 @@ import Link from 'next/link'
 
 export function Breadcrumb({
 	path,
-	bg = 'transparent',
+	backgroundColor = 'transparent',
 	textColor = '#000',
 }: {
 	path: string[]
-	bg?: string
+	backgroundColor?: string
 	textColor?: string
 }) {
 	const breadcrumbs = path.reduce<Array<{ name: string; href: string }>>(
@@ -20,26 +20,31 @@ export function Breadcrumb({
 	return (
 		<div
 			style={{
-				backgroundColor: bg,
+				backgroundColor,
 				color: textColor,
 			}}
+			className="w-full"
 		>
-			<nav aria-label="Breadcrumb" className="container pt-16 mx-auto px-4 ">
-				<ol className="flex gap-2 ">
+			<nav
+				aria-label="Breadcrumb"
+				className="container mx-auto px-4 pt-8 sm:pt-12 md:pt-16"
+			>
+				<ol className="flex flex-wrap gap-2 text-xs sm:text-sm md:text-base">
 					{breadcrumbs.map((crumb, index) => (
 						<li key={crumb.href} className="flex items-center">
-							{index > 0 && <span className="mx-2">/</span>}
+							{index > 0 && <span className="mx-1 sm:mx-2">/</span>}
 							<Link
 								href={crumb.href}
-								className={`text-sm hover:underline ${
-									index === breadcrumbs.length - 1
-										? `${
-												bg === 'transparent'
-													? 'bg-primary-hover'
-													: 'bg-primary-active'
-										  }  px-2 py-1 rounded`
-										: ''
-								}`}
+								className={`hover:underline transition-colors duration-200 
+									${
+										index === breadcrumbs.length - 1
+											? `${
+													backgroundColor === 'transparent'
+														? 'bg-primary-hover'
+														: 'bg-primary-active'
+											  } px-1.5 py-0.5 sm:px-2 sm:py-1 rounded`
+											: ''
+									}`}
 							>
 								{crumb.name.toUpperCase()}
 							</Link>

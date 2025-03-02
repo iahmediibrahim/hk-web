@@ -7,7 +7,6 @@ import { usePathname } from 'next/navigation'
 
 export function SecondNav({ pages }: { pages: SimplifiedPage[] }) {
 	const pathname = usePathname()
-	console.log('pathname', pathname)
 	// Find the active main page to show its children in secondary nav
 	const activeMainPage = pages.find((page) => {
 		return pathname?.startsWith(`/${joinSlugs(page.slugPath)}`)
@@ -17,7 +16,7 @@ export function SecondNav({ pages }: { pages: SimplifiedPage[] }) {
 			{/* Secondary Navigation - shows children of active main page */}
 			{activeMainPage && activeMainPage.children.length > 0 && (
 				<nav
-					className="h-16 relative flex flex-wrap justify-center items-center text-white z-40"
+					className="h-16 relative flex  justify-center items-center text-white z-40"
 					style={{ backgroundColor: `var(--${activeMainPage?.slug})` }}
 				>
 					{activeMainPage.children.map((child: any) => (

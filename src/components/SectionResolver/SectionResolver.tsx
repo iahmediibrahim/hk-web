@@ -1,9 +1,13 @@
 import { Entry } from 'contentful'
 import { ReactNode } from 'react'
+import { AboutSection, AboutSectionProps } from '../AboutSection'
 import { HeroBanner, HeroBannerProps } from '../HeroBanner'
+import { Testimonials, TestimonialsProps } from '../Testimonials'
 
 type SectionTypeMap = {
 	heroBanner: HeroBannerProps
+	aboutSection: AboutSectionProps
+	testimonials: TestimonialsProps
 	// heroSection: HeroSectionProps
 	// featureGrid: FeatureGridProps
 	// richTextBlock: RichTextProps
@@ -15,12 +19,20 @@ const componentMap: {
 	[K in keyof SectionTypeMap]: (props: SectionTypeMap[K]) => ReactNode
 } = {
 	heroBanner: HeroBanner,
+	aboutSection: AboutSection,
+	testimonials: Testimonials,
 	// heroSection: HeroSection,
 	// featureGrid: FeatureGrid,
 	// richTextBlock: RichTextBlock,
 }
 
-export function SectionResolver({ section }: { section: Entry<any> }) {
+export function SectionResolver({
+	section,
+	slug,
+}: {
+	section: Entry<any>
+	slug: string
+}) {
 	// Get the content type ID from the entry
 	const contentType = section.sys.contentType.sys.id as keyof SectionTypeMap
 	console.log('section', section)
@@ -31,7 +43,10 @@ export function SectionResolver({ section }: { section: Entry<any> }) {
 		console.warn(`No component registered for ${contentType}`)
 		return null
 	}
-
+	const fields = {
+		...section.fields,
+		slug,
+	} as SectionTypeMap[typeof contentType]
 	// Type-safe props passing
-	return <Component {...section.fields} />
+	return <Component {...(fields as any)} />
 }

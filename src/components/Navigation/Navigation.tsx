@@ -16,7 +16,7 @@ export function Navigation({ pages }: { pages: SimplifiedPage[] }) {
 
 	return (
 		<>
-			<section className="header fixed inset-x-0 flex flex-row justify-between py-2 px-2 items-center backdrop-blur-lg bg-white/80 shadow-sm">
+			<section className="header fixed inset-x-0 top-0 flex flex-row justify-between py-2 px-2 items-center backdrop-blur-lg bg-white/80 shadow-sm z-50">
 				<Link
 					href={`/`}
 					className="flex justify-center items-center w-12 h-12  bg-primary-hover  hover:bg-gray-200/60 rounded-full"
@@ -36,7 +36,7 @@ export function Navigation({ pages }: { pages: SimplifiedPage[] }) {
 
 				<div className="hidden lg:flex flex-col w-full">
 					{/* Top Navigation */}
-					<nav className="flex justify-center items-center space-x-8 py-4 bg-white">
+					<nav className="flex justify-center items-center space-x-8 py-4 ">
 						{pages.map((page) => (
 							<Link
 								key={page.id}
