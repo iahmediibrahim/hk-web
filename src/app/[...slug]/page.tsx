@@ -1,4 +1,9 @@
-import { Breadcrumb, SectionResolver } from '@/components'
+import {
+	Breadcrumb,
+	HowItWorks,
+	InfoSection,
+	SectionResolver,
+} from '@/components'
 import Faqs from '@/components/Faqs/Faqs'
 import { getPageBySlug } from '@/lib/contentful/client'
 import { ContentfulPage } from '@/lib/contentful/types'
@@ -36,7 +41,7 @@ export default async function Page({ params }: { params: { slug: string[] } }) {
 				/>
 			))}
 			<Faqs slug={slug[0]} heading="FAQS" />
-			{/* <HowItWorks
+			<HowItWorks
 				paragraphs={[
 					'As part of our mission to ensure no child is left behind, we are excited to launch a new initiative, with social value at its heart. This campaign aims to help your school provide much-needed school uniforms or food vouchers to the pupils who need them most.',
 					'We are committed to making a positive impact on the lives of children in need, and we believe that every child deserves a chance to thrive. By participating in this campaign, you can help us make a difference in the lives of children in need.',
@@ -45,6 +50,72 @@ export default async function Page({ params }: { params: { slug: string[] } }) {
 					title: 'Learn More',
 					link: '/',
 				}}
+				slug={slug[0]}
+			/>
+			<InfoSection
+				heading="An initiative centred on social value"
+				paragraph="As part of our mission to ensure no child is left behind, we are excited to launch a new incentive, with social value at its heart. This campaign aims to help your school provide much-needed school uniforms or food vouchers to the pupils who need them most."
+				cta={{
+					title: 'Learn More',
+					link: '/',
+				}}
+				list={[
+					{
+						text: 'Adult Social Worker jobs',
+					},
+					{
+						text: "Children's Social Worker jobs",
+					},
+					{
+						text: 'Dental Nurse jobs',
+					},
+					{
+						text: 'Registered Manager Jobs (Adults)',
+					},
+					{
+						text: "Registered Manager Jobs (Children's home)",
+					},
+					{
+						text: 'Deputy Manager jobs (Adults)',
+					},
+					{
+						text: "Deputy Manager jobs (Children's home)",
+					},
+					{
+						text: 'Healthcare Assistant jobs',
+					},
+					{
+						text: 'Registered Mental Health Nurse jobs',
+					},
+					{
+						text: 'Registered General Nurse jobs',
+					},
+					{
+						text: 'Unqualified support worker jobs',
+					},
+					{
+						text: 'Qualified support worker jobs',
+					},
+					{
+						text: 'Occupational Therapist jobs',
+					},
+					{
+						text: 'Home Manager jobs',
+					},
+					{
+						text: 'Psychologist/Psychotherapist jobs',
+					},
+					{
+						text: 'Dentist jobs',
+					},
+					{
+						text: 'Dental Hygienist jobs',
+					},
+					{
+						text: 'Clinical Lead jobs',
+					},
+				]}
+				textBg
 				slug={slug[0]}
 			/>
 			<InfoSection
@@ -73,7 +144,7 @@ export default async function Page({ params }: { params: { slug: string[] } }) {
 					link: '/',
 				}}
 				imagePosition="right"
-			/> */}
+			/>
 		</main>
 	)
 }

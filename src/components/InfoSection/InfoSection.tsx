@@ -1,3 +1,5 @@
+import { InfoStepCard } from '../InfoStepCard'
+import { ListComponent } from '../ListComponent'
 import { PrimaryButton } from '../PrimaryButton'
 
 export interface InfoSectionProps {
@@ -7,18 +9,29 @@ export interface InfoSectionProps {
 		title: string
 		link: string
 	}
-	image: {
+	image?: {
 		src: string
 		alt: string
 	}
 	imagePosition?: 'left' | 'right'
 	textBg?: boolean
 	slug?: string
+	list?: {
+		text: string
+		linkTo?: string
+	}[]
+	cardList?: {
+		text: string
+		stepNumber?: number
+		paragraph?: string
+	}[]
 }
 
 export function InfoSection({
 	heading,
 	paragraph,
+	list,
+	cardList,
 	cta,
 	image,
 	imagePosition = 'left',
@@ -29,24 +42,62 @@ export function InfoSection({
 		<div className="md:w-6/12 w-full h-full">
 			<img
 				className="w-full h-full object-cover"
-				src={image.src}
-				alt={image.alt}
+				src={image?.src}
+				alt={image?.alt}
 			/>
 		</div>
 	)
 
 	const ContentSection = () => (
 		<div
-			className="md:w-6/12 w-full p-12 h-full flex flex-col justify-center"
+			className={`${image ? 'md:w-6/12' : 'w-full'} p-12 h-full flex flex-col ${
+				image ? 'justify-center' : 'items-center'
+			}`}
 			style={{
 				backgroundColor: textBg ? `var(--${slug}-heroBanner)` : 'white',
 			}}
 		>
-			<div className="text-lg" style={{ color: textBg ? 'white' : 'black' }}>
+			<div
+				className={`text-lg ${!image && 'text-center'}`}
+				style={{ color: textBg ? 'white' : 'black' }}
+			>
 				<h2 className="md:text-5xl text-4xl font-black mb-7">{heading}</h2>
+				{list && <ListComponent list={list} slug={slug} />}
+				{cardList && (
+					<InfoStepCard
+						cardList={[
+							{
+								text: 'dasdasd',
+								stepNumber: 1,
+								paragraph:
+									'The average salary for an Adult Social Worker is $45,000 to $55,000 per year. The average age for an Adult Social Worker is 25 to 34 years old.',
+							},
+							{
+								stepNumber: 1,
+								paragraph:
+									'The average salary for an Adult Social Worker is $45,000 to $55,000 per year. The average age for an Adult Social Worker is 25 to 34 years old.',
+							},
+							{
+								stepNumber: 1,
+								paragraph:
+									'The average salary for an Adult Social Worker is $45,000 to $55,000 per year. The average age for an Adult Social Worker is 25 to 34 years old.',
+							},
+							{
+								stepNumber: 1,
+								paragraph:
+									'The average salary for an Adult Social Worker is $45,000 to $55,000 per year. The average age for an Adult Social Worker is 25 to 34 years old.',
+							},
+						]}
+						slug={slug}
+					/>
+				)}
 				<p>{paragraph}</p>
 			</div>
-			{cta && <PrimaryButton href={cta.link}>{cta.title}</PrimaryButton>}
+			{cta && (
+				<PrimaryButton href={cta.link} className={!image ? 'mx-auto mt-6' : ''}>
+					{cta.title}
+				</PrimaryButton>
+			)}
 		</div>
 	)
 
@@ -54,24 +105,30 @@ export function InfoSection({
 		<div className="container mx-auto">
 			<div className="flex flex-wrap">
 				{/* Desktop layout */}
-				<div className="hidden md:flex w-full h-[600px]">
-					{imagePosition === 'left' ? (
-						<>
-							<ImageSection />
-							<ContentSection />
-						</>
+				<div
+					className={`hidden md:flex w-full ${image ? 'h-[600px]' : 'h-auto'}`}
+				>
+					{image ? (
+						imagePosition === 'left' ? (
+							<>
+								<ImageSection />
+								<ContentSection />
+							</>
+						) : (
+							<>
+								<ContentSection />
+								<ImageSection />
+							</>
+						)
 					) : (
-						<>
-							<ContentSection />
-							<ImageSection />
-						</>
+						<ContentSection />
 					)}
 				</div>
 
 				{/* Mobile layout */}
 				<div className="flex flex-col md:hidden w-full">
 					<ContentSection />
-					<ImageSection />
+					{image && <ImageSection />}
 				</div>
 			</div>
 		</div>
