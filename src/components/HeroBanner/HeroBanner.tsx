@@ -41,7 +41,7 @@ export function HeroBanner({
 	return (
 		<div
 			className="pb-16"
-			style={{ backgroundColor: `var(--${slug}-heroPanner)` }}
+			style={{ backgroundColor: `var(--${slug}-heroBanner)` }}
 		>
 			<div className="container mx-auto px-4">
 				<div className="flex flex-wrap justify-between items-center text-white">

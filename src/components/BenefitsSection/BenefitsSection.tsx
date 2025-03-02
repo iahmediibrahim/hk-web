@@ -1,20 +1,20 @@
-interface BenefitCard {
-	text: string
-}
-
-interface BenefitsProps {
+export interface BenefitsProps {
 	heading?: string
-	listOfCards: BenefitCard[]
+	listOfBenefits: {
+		fields: {
+			text: string
+		}
+	}[]
 	slug: string
 }
 
 export function BenefitsSection({
 	heading = 'Benefits',
-	listOfCards,
+	listOfBenefits,
 	slug,
 }: BenefitsProps) {
 	return (
-		<div className="container mx-auto px-4">
+		<div className="container mx-auto px-4 py-12">
 			<div className="mt-8 sm:mt-12">
 				<div className="w-full mb-8 sm:mb-10">
 					<h2
@@ -26,10 +26,10 @@ export function BenefitsSection({
 				</div>
 			</div>
 			<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mx-4">
-				{listOfCards.map((item, index) => (
+				{listOfBenefits.map((item, index) => (
 					<div key={index} className="h-full">
 						<div className="relative h-full p-6 sm:p-8 bg-gray-100/70 hover:bg-gray-200/70 transition-colors duration-300 flex items-center rounded-lg">
-							<div className="pl-12 sm:pl-14">{item.text}</div>
+							<div className="pl-12 sm:pl-14">{item?.fields.text}</div>
 							<div className="absolute -top-[30px] -left-[30px]">
 								<svg
 									viewBox="0 0 24 24"

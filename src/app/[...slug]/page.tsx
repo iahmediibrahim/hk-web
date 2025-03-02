@@ -1,4 +1,5 @@
-import { BenefitsSection, Breadcrumb, SectionResolver } from '@/components'
+import { Breadcrumb, SectionResolver } from '@/components'
+import Faqs from '@/components/Faqs/Faqs'
 import { getPageBySlug } from '@/lib/contentful/client'
 import { ContentfulPage } from '@/lib/contentful/types'
 import { notFound } from 'next/navigation'
@@ -21,7 +22,7 @@ export default async function Page({ params }: { params: { slug: string[] } }) {
 			{contentType === 'subPage' && (
 				<Breadcrumb
 					path={slug}
-					backgroundColor={`var(--${slug[0]}-heroPanner)`}
+					backgroundColor={`var(--${slug[0]}-heroBanner)`}
 					textColor="white"
 				/>
 			)}
@@ -34,29 +35,7 @@ export default async function Page({ params }: { params: { slug: string[] } }) {
 					slug={slug[0]}
 				/>
 			))}
-
-			<BenefitsSection
-				heading="dasdasd"
-				listOfCards={[
-					{
-						text: 'Hire top talent contributing to growth',
-					},
-
-					{
-						text: '1 day a year – Give back to our clients',
-					},
-					{
-						text: 'dasdasd',
-					},
-					{
-						text: 'dasdasd',
-					},
-					{
-						text: 'dasdasd',
-					},
-				]}
-				slug={slug[0]}
-			/>
+			<Faqs slug={slug[0]} heading="FAQS" />
 			{/* <HowItWorks
 				paragraphs={[
 					'As part of our mission to ensure no child is left behind, we are excited to launch a new initiative, with social value at its heart. This campaign aims to help your school provide much-needed school uniforms or food vouchers to the pupils who need them most.',

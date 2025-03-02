@@ -1,6 +1,7 @@
 import { Entry } from 'contentful'
 import { ReactNode } from 'react'
 import { AboutSection, AboutSectionProps } from '../AboutSection'
+import { BenefitsProps, BenefitsSection } from '../BenefitsSection'
 import { HeroBanner, HeroBannerProps } from '../HeroBanner'
 import { Testimonials, TestimonialsProps } from '../Testimonials'
 
@@ -8,6 +9,7 @@ type SectionTypeMap = {
 	heroBanner: HeroBannerProps
 	aboutSection: AboutSectionProps
 	testimonials: TestimonialsProps
+	benefitsSection: BenefitsProps
 	// heroSection: HeroSectionProps
 	// featureGrid: FeatureGridProps
 	// richTextBlock: RichTextProps
@@ -21,6 +23,8 @@ const componentMap: {
 	heroBanner: HeroBanner,
 	aboutSection: AboutSection,
 	testimonials: Testimonials,
+	benefitsSection: BenefitsSection,
+
 	// heroSection: HeroSection,
 	// featureGrid: FeatureGrid,
 	// richTextBlock: RichTextBlock,

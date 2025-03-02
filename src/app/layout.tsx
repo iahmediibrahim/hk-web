@@ -1,19 +1,9 @@
 import type { Metadata } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
+import { Suspense } from 'react'
 
-import { Navigation, SecondNav } from '@/components'
+import { Footer, Navigation, SecondNav } from '@/components'
 import { getPageHierarchy } from '@/lib/contentful/client'
 import './globals.css'
-
-const geistSans = Geist({
-	variable: '--font-geist-sans',
-	subsets: ['latin'],
-})
-
-const geistMono = Geist_Mono({
-	variable: '--font-geist-mono',
-	subsets: ['latin'],
-})
 
 export const metadata: Metadata = {
 	title: 'Create Next App',
@@ -30,19 +20,23 @@ export default async function RootLayout({
 	return (
 		<html lang="en">
 			<body>
-				<header className="bg-white shadow-sm">
-					{/* <div className="max-w-7xl mx-auto px-4 py-4"> */}
-					<Navigation pages={pages} />
-					{/* </div> */}
-				</header>
+				<Suspense fallback={<div>Loading navigation...</div>}>
+					<header className="bg-white shadow-sm">
+						<Navigation pages={pages} />
+					</header>
+				</Suspense>
 				<main>
 					<div>
 						<div className="mb-16 md:mb-[84px]"></div>
-						<SecondNav pages={pages} />
+						<Suspense fallback={<div>Loading secondary navigation...</div>}>
+							<SecondNav pages={pages} />
+						</Suspense>
 					</div>
-
-					{children}
+					<Suspense fallback={<div>Loading content...</div>}>
+						{children}
+					</Suspense>
 				</main>
+				<Footer />
 			</body>
 		</html>
 	)

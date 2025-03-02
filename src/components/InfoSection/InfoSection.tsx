@@ -39,7 +39,7 @@ export function InfoSection({
 		<div
 			className="md:w-6/12 w-full p-12 h-full flex flex-col justify-center"
 			style={{
-				backgroundColor: textBg ? `var(--${slug}-heroPanner)` : 'white',
+				backgroundColor: textBg ? `var(--${slug}-heroBanner)` : 'white',
 			}}
 		>
 			<div className="text-lg" style={{ color: textBg ? 'white' : 'black' }}>
