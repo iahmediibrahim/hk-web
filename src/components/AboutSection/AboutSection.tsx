@@ -24,23 +24,23 @@ export interface AboutSectionProps {
 			title: string
 		}
 	}>
-	slug: string
+	colorVar: string
 }
 
 export function AboutSection({
 	title,
 	paragraph,
 	img,
-	slug,
+	colorVar,
 	specialisms,
 }: AboutSectionProps) {
 	return (
-		<div className="container mx-auto px-4  py-12">
+		<div id="about" className="container mx-auto px-4  py-12">
 			<div className="flex flex-col md:flex-row justify-between items-center gap-8 text-black">
 				<div className="w-full md:w-[45%] space-y-6">
 					<div className="w-full my-6 md:my-10">
 						<p
-							style={{ color: `var(--${slug})` }}
+							style={{ color: `var(--${colorVar})` }}
 							className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight md:leading-[3.5rem]"
 						>
 							{title}

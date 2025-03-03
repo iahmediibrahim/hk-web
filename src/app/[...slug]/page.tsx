@@ -1,5 +1,6 @@
 import {
 	Breadcrumb,
+	HeroSection,
 	HowItWorks,
 	InfoSection,
 	SectionResolver,
@@ -9,7 +10,11 @@ import { getPageBySlug } from '@/lib/contentful/client'
 import { ContentfulPage } from '@/lib/contentful/types'
 import { notFound } from 'next/navigation'
 
-export default async function Page({ params }: { params: { slug: string[] } }) {
+export default async function Page({
+	params,
+}: {
+	params: Promise<{ slug: string[] }>
+}) {
 	const { slug } = await params
 	const contentType = slug.length === 1 ? 'page' : 'subPage'
 	const page: ContentfulPage = await getPageBySlug(
@@ -20,14 +25,16 @@ export default async function Page({ params }: { params: { slug: string[] } }) {
 	if (!page) {
 		notFound()
 	}
-	console.log(slug[0])
-
+	const colorVar = slug[0] === '' ? 'dark-grey' : slug[0]
+	console.log('colorVar', colorVar)
 	return (
 		<main>
+			<HeroSection colorVar={colorVar} />
+
 			{contentType === 'subPage' && (
 				<Breadcrumb
 					path={slug}
-					backgroundColor={`var(--${slug[0]}-heroBanner)`}
+					backgroundColor={`var(--${colorVar}-heroBanner)`}
 					textColor="white"
 				/>
 			)}
@@ -37,10 +44,10 @@ export default async function Page({ params }: { params: { slug: string[] } }) {
 				<SectionResolver
 					key={section.sys.id}
 					section={section}
-					slug={slug[0]}
+					colorVar={colorVar}
 				/>
 			))}
-			<Faqs slug={slug[0]} heading="FAQS" />
+			<Faqs colorVar={colorVar} heading="FAQS" />
 			<HowItWorks
 				paragraphs={[
 					'As part of our mission to ensure no child is left behind, we are excited to launch a new initiative, with social value at its heart. This campaign aims to help your school provide much-needed school uniforms or food vouchers to the pupils who need them most.',
@@ -50,7 +57,7 @@ export default async function Page({ params }: { params: { slug: string[] } }) {
 					title: 'Learn More',
 					link: '/',
 				}}
-				slug={slug[0]}
+				slug={colorVar}
 			/>
 			<InfoSection
 				heading="An initiative centred on social value"
@@ -116,7 +123,7 @@ export default async function Page({ params }: { params: { slug: string[] } }) {
 					},
 				]}
 				textBg
-				slug={slug[0]}
+				colorVar={colorVar}
 			/>
 			<InfoSection
 				image={{
@@ -130,7 +137,7 @@ export default async function Page({ params }: { params: { slug: string[] } }) {
 					link: '/',
 				}}
 				textBg
-				slug={slug[0]}
+				colorVar={colorVar}
 			/>
 			<InfoSection
 				image={{

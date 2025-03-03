@@ -1,3 +1,9 @@
+import { HeroSection } from '@/components'
+
 export default function Home() {
-	return <div className=" ">{/* <Navigation /> */}</div>
+	return (
+		<div className=" ">
+			<HeroSection colorVar={'/'} />
+		</div>
+	)
 }

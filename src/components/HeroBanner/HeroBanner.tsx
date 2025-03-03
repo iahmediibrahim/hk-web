@@ -27,7 +27,7 @@ export interface HeroBannerProps {
 		}
 	}
 	bg?: string
-	slug: string
+	colorVar: string
 }
 
 export function HeroBanner({
@@ -36,12 +36,13 @@ export function HeroBanner({
 	cta,
 	img,
 	counter,
-	slug,
+	colorVar,
 }: HeroBannerProps) {
+	console.log('dasdasdas', colorVar)
 	return (
 		<div
 			className="pb-16"
-			style={{ backgroundColor: `var(--${slug}-heroBanner)` }}
+			style={{ backgroundColor: `var(--${colorVar}-heroBanner)` }}
 		>
 			<div className="container mx-auto px-4">
 				<div className="flex flex-wrap justify-between items-center text-white">

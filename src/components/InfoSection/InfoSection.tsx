@@ -15,7 +15,7 @@ export interface InfoSectionProps {
 	}
 	imagePosition?: 'left' | 'right'
 	textBg?: boolean
-	slug?: string
+	colorVar?: string
 	list?: {
 		text: string
 		linkTo?: string
@@ -36,7 +36,7 @@ export function InfoSection({
 	image,
 	imagePosition = 'left',
 	textBg = false,
-	slug,
+	colorVar,
 }: InfoSectionProps) {
 	const ImageSection = () => (
 		<div className="md:w-6/12 w-full h-full">
@@ -54,7 +54,7 @@ export function InfoSection({
 				image ? 'justify-center' : 'items-center'
 			}`}
 			style={{
-				backgroundColor: textBg ? `var(--${slug}-heroBanner)` : 'white',
+				backgroundColor: textBg ? `var(--${colorVar}-heroBanner)` : 'white',
 			}}
 		>
 			<div
@@ -62,7 +62,7 @@ export function InfoSection({
 				style={{ color: textBg ? 'white' : 'black' }}
 			>
 				<h2 className="md:text-5xl text-4xl font-black mb-7">{heading}</h2>
-				{list && <ListComponent list={list} slug={slug} />}
+				{list && <ListComponent list={list} colorVar={colorVar} />}
 				{cardList && (
 					<InfoStepCard
 						cardList={[
@@ -88,7 +88,7 @@ export function InfoSection({
 									'The average salary for an Adult Social Worker is $45,000 to $55,000 per year. The average age for an Adult Social Worker is 25 to 34 years old.',
 							},
 						]}
-						slug={slug}
+						colorVar={colorVar}
 					/>
 				)}
 				<p>{paragraph}</p>

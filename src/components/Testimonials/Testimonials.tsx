@@ -13,7 +13,7 @@ export interface TestimonialsProps {
 			paragraph: string
 		}
 	}[]
-	slug: string
+	colorVar: string
 	cta: {
 		fields: {
 			ctaTitle: string
@@ -27,7 +27,7 @@ export function Testimonials({
 	heading,
 	paragraph,
 	testimonials,
-	slug,
+	colorVar,
 	cta,
 }: TestimonialsProps) {
 	const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true })
@@ -46,7 +46,7 @@ export function Testimonials({
 				<h2
 					className="text-4xl font-bold mb-4"
 					style={{
-						color: `var(--${slug})`,
+						color: `var(--${colorVar})`,
 					}}
 				>
 					{heading}
@@ -90,7 +90,7 @@ export function Testimonials({
 				<button
 					onClick={scrollPrev}
 					className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-white rounded-full p-2 shadow-lg transition-transform z-10"
-					style={{ color: `var(--${slug})` }}
+					style={{ color: `var(--${colorVar})` }}
 				>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -111,7 +111,7 @@ export function Testimonials({
 					onClick={scrollNext}
 					className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-white rounded-full p-2 shadow-lg transition-transform z-10"
 					style={{
-						color: `var(--${slug})`,
+						color: `var(--${colorVar})`,
 					}}
 				>
 					<svg

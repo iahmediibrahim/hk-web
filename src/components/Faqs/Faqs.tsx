@@ -13,14 +13,14 @@ interface FaqsProps {
 	heading?: string
 	paragraph?: string
 	questionItems?: FaqItem[]
-	slug: string
+	colorVar: string
 }
 
 export default function Faqs({
 	heading,
 	paragraph,
 	questionItems,
-	slug,
+	colorVar,
 }: FaqsProps) {
 	const [activeIndex, setActiveIndex] = useState<number | null>(null)
 	const contentRefs = useRef<(HTMLDivElement | null)[]>([])
@@ -63,7 +63,7 @@ export default function Faqs({
 				<h2
 					className="text-4xl font-bold mb-4"
 					style={{
-						color: `var(--${slug})`,
+						color: `var(--${colorVar})`,
 					}}
 				>
 					{heading}
@@ -76,7 +76,7 @@ export default function Faqs({
 						key={index}
 						className="accordion-item rounded-lg overflow-hidden"
 						style={{
-							backgroundColor: `var(--${slug}-heroBanner)`,
+							backgroundColor: `var(--${colorVar}-heroBanner)`,
 						}}
 					>
 						<button
@@ -85,8 +85,8 @@ export default function Faqs({
 							onClick={() => toggle(index)}
 							style={{
 								backgroundColor: isActive(index)
-									? `var(--${slug}-heroBanner)`
-									: `var(--${slug})`,
+									? `var(--${colorVar}-heroBanner)`
+									: `var(--${colorVar})`,
 							}}
 						>
 							<span className="flex-1 pr-4">{item.question}</span>
@@ -104,7 +104,7 @@ export default function Faqs({
 							className={`transition-all duration-500 ease-in-out 
 								${isActive(index) ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}
 							style={{
-								backgroundColor: `rgb(from var(--${slug}) r g b / 10%)`,
+								backgroundColor: `rgb(from var(--${colorVar}) r g b / 10%)`,
 							}}
 						>
 							<p className="p-6 text-white text-sm sm:text-base leading-relaxed">

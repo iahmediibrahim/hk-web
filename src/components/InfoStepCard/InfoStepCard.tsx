@@ -6,10 +6,10 @@ interface InfoStepCardProps {
 		text?: string
 		paragraph: string
 	}[]
-	slug?: string
+	colorVar?: string
 }
 
-export function InfoStepCard({ cardList, slug }: InfoStepCardProps) {
+export function InfoStepCard({ cardList, colorVar }: InfoStepCardProps) {
 	return (
 		<ul className="list-none grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 md:gap-4 my-12">
 			{cardList.map((item, index) => {
@@ -19,8 +19,8 @@ export function InfoStepCard({ cardList, slug }: InfoStepCardProps) {
 						key={index}
 						className="rounded-lg p-8 border-2 border-gray-300 shadow-md"
 						style={{
-							backgroundColor: slug
-								? `var(--${slug}-heroBanner)`
+							backgroundColor: colorVar
+								? `var(--${colorVar}-heroBanner)`
 								: 'transparent',
 						}}
 					>
@@ -29,7 +29,7 @@ export function InfoStepCard({ cardList, slug }: InfoStepCardProps) {
 							<h3
 								className="text-2xl font-bold"
 								style={{
-									color: slug ? `var(--${slug})` : 'inherit',
+									color: colorVar ? `var(--${colorVar})` : 'inherit',
 								}}
 							>
 								{text}

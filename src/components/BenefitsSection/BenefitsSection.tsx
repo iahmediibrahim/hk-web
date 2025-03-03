@@ -5,13 +5,13 @@ export interface BenefitsProps {
 			text: string
 		}
 	}[]
-	slug: string
+	colorVar: string
 }
 
 export function BenefitsSection({
 	heading = 'Benefits',
 	listOfBenefits,
-	slug,
+	colorVar,
 }: BenefitsProps) {
 	return (
 		<div className="container mx-auto px-4 py-12">
@@ -19,7 +19,7 @@ export function BenefitsSection({
 				<div className="w-full mb-8 sm:mb-10">
 					<h2
 						className="text-2xl sm:text-3xl md:text-4xl font-bold"
-						style={{ color: `var(--${slug})` }}
+						style={{ color: `var(--${colorVar})` }}
 					>
 						{heading}
 					</h2>
@@ -39,7 +39,7 @@ export function BenefitsSection({
 								>
 									<path
 										d="M20 6L9 17L4 12"
-										stroke={`var(--${slug})`}
+										stroke={`var(--${colorVar})`}
 										strokeWidth="3.5"
 										strokeLinecap="round"
 										strokeLinejoin="round"

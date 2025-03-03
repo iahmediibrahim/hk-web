@@ -3,6 +3,7 @@ import { Suspense } from 'react'
 
 import { Footer, Navigation, SecondNav } from '@/components'
 import { getPageHierarchy } from '@/lib/contentful/client'
+import '@/lib/fontawesome'
 import './globals.css'
 
 export const metadata: Metadata = {

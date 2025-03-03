@@ -25,7 +25,8 @@ export const PrimaryButton = ({
 }: PrimaryButtonProps) => {
 	const router = useRouter()
 	const pathname = usePathname()
-	const mainPage = pathname.split('/')[1]
+	let mainPage = pathname.split('/')[1]
+	mainPage = mainPage === '' ? 'dark-grey' : mainPage
 	const [isHovered, setIsHovered] = useState(false)
 	const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
 		if (disabled) return

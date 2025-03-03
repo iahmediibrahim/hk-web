@@ -15,6 +15,8 @@
 	--healthcare-heroBanner: #d42c51;
 	--international-medical-heroBanner: #8dc9a2;
 	--academy-heroBanner: #52a8cd;
+	--dark-grey-heroBanner: #525252;
+	--dark-grey: #303030;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -24,6 +26,10 @@
 	}
 }
 
+html {
+	scroll-behavior: smooth;
+	overflow-x: hidden;
+}
 body {
 	color: var(--foreground);
 	background: var(--background);

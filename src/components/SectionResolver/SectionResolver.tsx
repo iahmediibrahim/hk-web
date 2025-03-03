@@ -32,10 +32,10 @@ const componentMap: {
 
 export function SectionResolver({
 	section,
-	slug,
+	colorVar,
 }: {
 	section: Entry<any>
-	slug: string
+	colorVar: string
 }) {
 	// Get the content type ID from the entry
 	const contentType = section.sys.contentType.sys.id as keyof SectionTypeMap
@@ -49,7 +49,7 @@ export function SectionResolver({
 	}
 	const fields = {
 		...section.fields,
-		slug,
+		colorVar,
 	} as SectionTypeMap[typeof contentType]
 	// Type-safe props passing
 	return <Component {...(fields as any)} />
