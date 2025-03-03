@@ -1,22 +1,25 @@
-export interface ContentfulPage {
+import { EntryFields, EntrySkeletonType } from 'contentful'
+
+export type ContentfulPage = {
+	fields: {
+		title: EntryFields.Text
+		slug: EntryFields.Text
+		parentPage: ContentfulPage | undefined
+		sections: EntryFields.EntryLink<EntrySkeletonType>[]
+		seoTitle?: EntryFields.Text
+		seoDescription?: EntryFields.Text
+	}
 	sys: {
 		id: string
 	}
-	fields: {
-		title: string
-		slug: string
-		parentPage?: ContentfulPage
-		sections: any[]
-		seoTitle?: string
-		seoDescription?: string
-	}
+	contentTypeId: string
 }
 
 export interface SimplifiedPage {
-	id: string
-	title: string
-	slug: string
-	parentId: string | null
+	id: EntryFields.Text
+	title: EntryFields.Text
+	slug: EntryFields.Text
+	parentId?: EntryFields.Text
 	children: SimplifiedPage[]
-	slugPath: string[]
+	slugPath: EntryFields.Text[]
 }

@@ -7,7 +7,6 @@ import {
 } from '@/components'
 import Faqs from '@/components/Faqs/Faqs'
 import { getPageBySlug } from '@/lib/contentful/client'
-import { ContentfulPage } from '@/lib/contentful/types'
 import { notFound } from 'next/navigation'
 
 export default async function Page({
@@ -17,14 +16,12 @@ export default async function Page({
 }) {
 	const { slug } = await params
 	const contentType = slug.length === 1 ? 'page' : 'subPage'
-	const page: ContentfulPage = await getPageBySlug(
-		slug[slug.length - 1],
-		contentType,
-	)
-	console.log('page:::', page)
+	const page = await getPageBySlug(slug[slug.length - 1], contentType)
 	if (!page) {
 		notFound()
 	}
+	console.log('page:::', page.fields)
+
 	const colorVar = slug[0] === '' ? 'dark-grey' : slug[0]
 	console.log('colorVar', colorVar)
 	return (

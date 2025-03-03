@@ -1,47 +1,41 @@
+import { createClient } from 'contentful'
 import { ContentfulPage, SimplifiedPage } from './types'
 
-const contentful = require('contentful')
-
-export const client = contentful.createClient({
-	space: process.env.CONTENTFUL_SPACE_ID,
-	accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+const client = createClient({
+	space: process.env.CONTENTFUL_SPACE_ID || '',
+	accessToken: process.env.CONTENTFUL_ACCESS_TOKEN || '',
 })
 export const getPageBySlug = async (slug: string, contentType: string) => {
 	try {
 		const response = await client.getEntries({
 			content_type: contentType,
 			'fields.slug': slug,
-			select: 'fields.title,fields.slug,fields.sections',
+			select: ['fields.title', 'fields.slug', 'fields.sections'],
 			include: 3,
 		})
 
 		if (!response?.items) {
 			throw new Error('Failed to fetch Page')
 		}
-
-		return response.items[0]
+		console.log(response.items[0])
+		return response.items[0] as unknown as ContentfulPage
 	} catch (error) {
 		console.error('Error fetching posts:', error)
-		return {
-			props: {
-				posts: [],
-			},
-		}
 	}
 }
 export async function getAllPages() {
-	const entries = await client.getEntries({
+	const entries = await client.getEntries<ContentfulPage>({
 		content_type: 'page',
 		include: 3,
 	})
 	return entries.items
 }
 
-function buildSlugPath(page: any): string[] {
+function buildSlugPath(page: ContentfulPage): string[] {
 	const path: string[] = []
-	let currentPage = page
+	let currentPage: ContentfulPage | undefined = page
 
-	while (currentPage) {
+	while (currentPage && currentPage.fields) {
 		path.unshift(currentPage.fields.slug)
 		currentPage = currentPage.fields.parentPage
 	}
@@ -53,33 +47,33 @@ function buildSlugPath(page: any): string[] {
 
 export async function getPageHierarchy(): Promise<SimplifiedPage[]> {
 	const [pagesResponse, subPagesResponse] = await Promise.all([
-		client.getEntries({
+		client.getEntries<ContentfulPage>({
 			content_type: 'page',
-			select: 'fields.title,fields.slug,fields.parentPage',
+			select: ['fields.title', 'fields.slug', 'fields.parentPage'],
 			include: 3,
 		}),
-		client.getEntries({
+		client.getEntries<ContentfulPage>({
 			content_type: 'subPage',
-			select: 'fields.title,fields.slug,fields.parentPage',
+			select: ['fields.title', 'fields.slug', 'fields.parentPage'],
 			include: 3,
 		}),
 	])
 
 	const { items: pages } = pagesResponse
 	const { items: subPages } = subPagesResponse
-	const allPages = [...pages, ...subPages]
-	console.log(allPages)
+	const allPages = [...pages, ...subPages] as unknown[] as ContentfulPage[]
+	console.log('allPages', allPages)
 
 	const pageMap = new Map<string, SimplifiedPage>()
 	const rootPages: SimplifiedPage[] = []
-
+	console.log('allPages', allPages)
 	// First pass: Create simplified pages
 	allPages.forEach((page: ContentfulPage) => {
 		const simplified: SimplifiedPage = {
 			id: page.sys.id,
 			title: page.fields.title,
 			slug: page.fields.slug,
-			parentId: page.fields.parentPage?.sys.id || null,
+			parentId: page.fields.parentPage?.sys?.id,
 			slugPath: buildSlugPath(page),
 			children: [],
 		}

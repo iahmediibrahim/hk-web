@@ -1,10 +1,10 @@
 import type { Metadata } from 'next'
 import { Suspense } from 'react'
 
-import { Footer, Navigation, SecondNav } from '@/components'
-import { getPageHierarchy } from '@/lib/contentful/client'
+import { Footer, Loader } from '@/components'
 import '@/lib/fontawesome'
 import './globals.css'
+import Renderer from './Renderer'
 
 export const metadata: Metadata = {
 	title: 'Create Next App',
@@ -16,29 +16,20 @@ export default async function RootLayout({
 }: Readonly<{
 	children: React.ReactNode
 }>) {
-	const pages = await getPageHierarchy()
-
 	return (
 		<html lang="en">
 			<body>
-				<Suspense fallback={<div>Loading navigation...</div>}>
-					<header className="bg-white shadow-sm">
-						<Navigation pages={pages} />
-					</header>
+				<Suspense fallback={<Loader />}>
+					<Renderer>{children}</Renderer>
 				</Suspense>
-				<main>
-					<div>
-						<div className="mb-16 md:mb-[84px]"></div>
-						<Suspense fallback={<div>Loading secondary navigation...</div>}>
-							<SecondNav pages={pages} />
-						</Suspense>
-					</div>
-					<Suspense fallback={<div>Loading content...</div>}>
-						{children}
-					</Suspense>
-				</main>
 				<Footer />
 			</body>
 		</html>
 	)
 }
+
+// // Artificial delay component to test Suspense
+// async function SlowComponent({ children }: { children: React.ReactNode }) {
+// 	await new Promise((resolve) => setTimeout(resolve, 3000)) // 3 second delay
+// 	return <>{children}</>
+// }

@@ -23,7 +23,7 @@ export default function Faqs({
 	colorVar,
 }: FaqsProps) {
 	const [activeIndex, setActiveIndex] = useState<number | null>(null)
-	const contentRefs = useRef<(HTMLDivElement | null)[]>([])
+	const contentRefs = useRef<HTMLDivElement[] | null>([])
 
 	const defaultItems: FaqItem[] = [
 		{
@@ -98,9 +98,9 @@ export default function Faqs({
 							</div>
 						</button>
 						<div
-							ref={(el: HTMLDivElement | null) =>
-								(contentRefs.current[index] = el)
-							}
+							ref={(el: HTMLDivElement | null) => {
+								if (contentRefs.current && el) contentRefs.current[index] = el
+							}}
 							className={`transition-all duration-500 ease-in-out 
 								${isActive(index) ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}
 							style={{

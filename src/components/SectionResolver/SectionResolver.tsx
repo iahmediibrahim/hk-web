@@ -34,7 +34,7 @@ export function SectionResolver({
 	section,
 	colorVar,
 }: {
-	section: Entry<any>
+	section: Entry
 	colorVar: string
 }) {
 	// Get the content type ID from the entry
