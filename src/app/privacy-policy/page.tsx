@@ -23,9 +23,10 @@ export default function PrivacyPolicy() {
 
 					<div className="space-y-6">
 						<p>
-							Holden Knight Group ("us", "we", or "our") operates the
-							holdenknight.com website and the Holden Knight Group mobile
-							application (hereinafter referred to as the "Service").
+							Holden Knight Group (&quot;us&quot;, &quot;we&quot;, or
+							&quot;our&quot;) operates the holdenknight.com website and the
+							Holden Knight Group mobile application (hereinafter referred to as
+							the &quot;Service&quot;).
 						</p>
 						<p>
 							This page informs you of our policies regarding the collection,
@@ -74,7 +75,7 @@ export default function PrivacyPolicy() {
 						<p className="mb-4">
 							While using our Service, we may ask you to provide us with certain
 							personally identifiable information that can be used to contact or
-							identify you ("Personal Data"). Personally identifiable
+							identify you (&quot;Personal Data&quot;). Personally identifiable
 							information may include, but is not limited to:
 						</p>
 						<ul className="list-disc pl-5 space-y-3">

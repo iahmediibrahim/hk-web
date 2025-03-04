@@ -1,5 +1,7 @@
 'use client'
 
+import Image from 'next/image'
+
 interface OurClientsSectionProps {
 	heading: string
 	paragraph: string
@@ -33,10 +35,12 @@ export function OurClientsSection({
 				{images.map((image, index) => (
 					<div key={index} className="flex items-center justify-center p-4">
 						<div className="w-32 h-32 flex items-center justify-center">
-							<img
+							<Image
 								className="w-full h-full object-contain"
 								src={image.src}
 								alt={image.alt || 'Client logo'}
+								width={128}
+								height={128}
 							/>
 						</div>
 					</div>

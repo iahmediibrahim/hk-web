@@ -19,7 +19,7 @@ export function SecondNav({ pages }: { pages: SimplifiedPage[] }) {
 					className="h-16 relative flex  justify-center items-center text-white z-40"
 					style={{ backgroundColor: `var(--${activeMainPage?.slug})` }}
 				>
-					{activeMainPage.children.map((child: any) => (
+					{activeMainPage.children.map((child: SimplifiedPage) => (
 						<div key={child.id} className="relative group">
 							<Link
 								href={`/${joinSlugs(child.slugPath)}`}
@@ -52,7 +52,7 @@ export function SecondNav({ pages }: { pages: SimplifiedPage[] }) {
 							{child.children?.length > 0 && (
 								<div className="absolute left-0 hidden group-hover:block pt-2 z-40">
 									<div className="bg-white rounded-md shadow-lg py-2 min-w-[200px]">
-										{child.children.map((subChild: any) => (
+										{child.children.map((subChild: SimplifiedPage) => (
 											<Link
 												key={subChild.id}
 												href={`/${joinSlugs(subChild.slugPath)}`}

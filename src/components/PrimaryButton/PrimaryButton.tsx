@@ -10,7 +10,7 @@ interface PrimaryButtonProps {
 	href?: string
 	type?: 'button' | 'submit' | 'reset'
 	disabled?: boolean
-	props?: any
+	props?: unknown
 	large?: boolean
 }
 export const PrimaryButton = ({

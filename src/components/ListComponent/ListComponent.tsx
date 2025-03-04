@@ -15,10 +15,6 @@ export function ListComponent({
 	return (
 		<ul className="list-none grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 md:gap-4 my-12">
 			{list.map((item, index) => {
-				const commonProps = {
-					key: `list-item-${index}`,
-					className: 'flex items-center text-sm md:text-base',
-				}
 				const checkIcon = (
 					<FontAwesomeIcon
 						icon={faCheck}
@@ -36,11 +32,20 @@ export function ListComponent({
 				)
 
 				return item.linkTo ? (
-					<Link href={item.linkTo} {...commonProps}>
+					<Link
+						href={item.linkTo}
+						key={`list-item-${index}`}
+						className="flex items-center text-sm md:text-base"
+					>
 						{ListItem}
 					</Link>
 				) : (
-					<li {...commonProps}>{ListItem}</li>
+					<li
+						key={`list-item-${index}`}
+						className="flex items-center text-sm md:text-base"
+					>
+						{ListItem}
+					</li>
 				)
 			})}
 		</ul>

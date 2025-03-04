@@ -1,4 +1,6 @@
 'use client'
+import { ContentfulImage } from '@/lib/contentful/types'
+import Image from 'next/image'
 import CountUp from 'react-countup'
 import { PrimaryButton } from '../PrimaryButton'
 
@@ -12,14 +14,7 @@ export interface HeroBannerProps {
 			large: boolean
 		}
 	}
-	img?: {
-		fields: {
-			file: {
-				url: string
-				fileName: string
-			}
-		}
-	}
+	img?: ContentfulImage
 	counter?: {
 		fields: {
 			title: string
@@ -38,7 +33,7 @@ export function HeroBanner({
 	counter,
 	colorVar,
 }: HeroBannerProps) {
-	console.log('dasdasdas', colorVar)
+	console.log('img.fields?.file.url', img?.fields)
 	return (
 		<div
 			className="pb-16"
@@ -77,10 +72,12 @@ export function HeroBanner({
 							className={`md:w-4/12 xs:w-full flex md:justify-center xs:justify-center md:mt-0 xs:mt-5 items-start
 								}`}
 						>
-							<img
+							<Image
 								className={`w-50`}
-								src={img.fields?.file.url}
+								src={'https:' + img.fields?.file.url}
 								alt="Banner visual"
+								width={img.fields.file.details.image.width}
+								height={img.fields.file.details.image.height}
 							/>
 						</div>
 					)}

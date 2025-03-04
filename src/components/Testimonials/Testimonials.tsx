@@ -1,4 +1,5 @@
 'use client'
+import { CTA } from '@/lib/contentful'
 import useEmblaCarousel from 'embla-carousel-react'
 import { useCallback } from 'react'
 import { PrimaryButton } from '../PrimaryButton'
@@ -14,13 +15,7 @@ export interface TestimonialsProps {
 		}
 	}[]
 	colorVar: string
-	cta: {
-		fields: {
-			ctaTitle: string
-			linkTo: string
-			large: boolean
-		}
-	}
+	cta: CTA
 }
 
 export function Testimonials({
@@ -64,7 +59,7 @@ export function Testimonials({
 							>
 								<div className="bg-primary-hover p-6 rounded-lg transform transition-all duration-500 hover:bg-primary-hover/95 backdrop-blur-sm mr-4">
 									<blockquote className="text-gray-700 text-base md:text-lg mb-6 italic transition-all duration-300 hover:text-gray-900 relative">
-										"{testimonial?.fields.paragraph}"
+										&ldquo;{testimonial?.fields.paragraph}&rdquo;
 									</blockquote>
 									<div className="flex items-center gap-4">
 										<div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-primary-hover to-gray-200 flex items-center justify-center shadow-inner">
@@ -132,7 +127,7 @@ export function Testimonials({
 			</div>
 			{cta && (
 				<PrimaryButton href={cta?.fields?.linkTo} large={cta?.fields?.large}>
-					{cta?.fields?.ctaTitle}
+					{cta?.fields?.title}
 				</PrimaryButton>
 			)}
 		</div>

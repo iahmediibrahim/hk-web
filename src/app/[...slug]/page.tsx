@@ -26,7 +26,18 @@ export default async function Page({
 	console.log('colorVar', colorVar)
 	return (
 		<main>
-			<HeroSection colorVar={colorVar} />
+			<HeroSection
+				colorVar={colorVar}
+				paragraph="As part of our mission to ensure no child is left behind, we are excited to launch a new initiative, with social value at its heart. This campaign aim"
+				linkToJobs="/jobs"
+				cta={{
+					fields: {
+						title: 'learn more',
+						linkTo: '#about',
+						large: true,
+					},
+				}}
+			/>
 
 			{contentType === 'subPage' && (
 				<Breadcrumb

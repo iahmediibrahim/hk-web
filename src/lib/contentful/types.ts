@@ -14,7 +14,27 @@ export type ContentfulPage = {
 	}
 	contentTypeId: string
 }
-
+export type ContentfulImage = {
+	fields: {
+		file: {
+			url: string
+			fileName: string
+			details: {
+				image: {
+					width: number
+					height: number
+				}
+			}
+		}
+	}
+}
+export type CTA = {
+	fields: {
+		title: string
+		linkTo: string
+		large: boolean
+	}
+}
 export interface SimplifiedPage {
 	id: EntryFields.Text
 	title: EntryFields.Text

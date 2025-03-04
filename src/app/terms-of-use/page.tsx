@@ -21,10 +21,12 @@ export default function TermsOfUse() {
 						</div>
 					</div>
 					<div className="mx-3 sm:mx-6 md:mx-10 lg:mx-12 text-base sm:text-lg">
-						These terms and conditions ("Terms", "Agreement") are an agreement
-						between Holden Knight Group ("Holden Knight", "us", "we" or "our")
-						and you ("User", "you" or "your"). This Agreement sets forth the
-						general terms and conditions of your use of the
+						These terms and conditions (&quot;Terms&quot;,
+						&quot;Agreement&quot;) are an agreement between Holden Knight Group
+						(&quot;Holden Knight&quot;, &quot;us&quot;, &quot;we&quot; or
+						&quot;our&quot;) and you (&quot;User&quot;, &quot;you&quot; or
+						&quot;your&quot;). This Agreement sets forth the general terms and
+						conditions of your use of the
 						<a
 							className="text-indigo-400 hover:text-indigo-500 transition-colors"
 							href="https://holdenknight.com"
@@ -34,8 +36,8 @@ export default function TermsOfUse() {
 							{' '}
 							holdenknight.com{' '}
 						</a>
-						website and any of its products or services (collectively, "Website"
-						or "Services").
+						website and any of its products or services (collectively,
+						&quot;Website&quot; or &quot;Services&quot;).
 					</div>
 				</div>
 

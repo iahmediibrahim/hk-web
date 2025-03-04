@@ -1,3 +1,4 @@
+import { CTA } from '@/lib/contentful'
 import { faChevronDown, faSearch } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Link from 'next/link'
@@ -10,11 +11,17 @@ import { PrimaryButton } from '../PrimaryButton'
 
 interface HeroSectionProps {
 	colorVar?: string
-	heading?: string
+	paragraph?: string
+	linkToJobs?: string
+	cta?: CTA
 }
 
-export function HeroSection({ colorVar, heading }: HeroSectionProps) {
-	console.log(colorVar)
+export function HeroSection({
+	colorVar,
+	paragraph,
+	linkToJobs,
+	cta,
+}: HeroSectionProps) {
 	return (
 		<section
 			style={{ height: 'calc(100vh - 200px)' }}
@@ -30,12 +37,6 @@ export function HeroSection({ colorVar, heading }: HeroSectionProps) {
 						'https://holdenknight.blob.core.windows.net/videos/children.jpg'
 					}
 				>
-					<source
-						src={
-							'https://holdenknight.blob.core.windows.net/videos/children.mp4'
-						}
-						type="video/mp4"
-					/>
 					<source
 						src={
 							'https://holdenknight.blob.core.windows.net/videos/children.webm'
@@ -62,32 +63,40 @@ export function HeroSection({ colorVar, heading }: HeroSectionProps) {
 						/>
 					)}
 
-					{heading && (
-						<p className="md:text-2xl xs:text-lg font-normal w-full flex justify-center my-3 opacity-70">
-							<span className="md:w-6/12 xs:w-full text-center">{heading}</span>
+					{paragraph && (
+						<p className="md:text-2xl xs:text-lg font-normal w-full flex justify-center my-3 opacity-70 -mb-1">
+							<span className="md:w-6/12 xs:w-full text-center">
+								{paragraph}
+							</span>
 						</p>
 					)}
 
 					<div className={`w-full flex flex-wrap justify-center items-center`}>
-						<PrimaryButton href="#about">
-							<div className="flex justify-center items-center">
-								<span>LEARN MORE</span>
-								<FontAwesomeIcon
-									className="ml-3 text-lg"
-									icon={faChevronDown}
-								/>
-							</div>
-						</PrimaryButton>
-
-						<Link
-							href={'jobs'}
-							className="mt-10 p-2 px-8 ease-out duration-300 rounded-full uppercase text-lg mx-1 bg-white"
-						>
-							<div className="flex justify-center items-center">
-								<FontAwesomeIcon className="mr-3 text-lg" icon={faSearch} />
-								<span>JOBS</span>
-							</div>
-						</Link>
+						{cta && (
+							<PrimaryButton
+								href={cta?.fields?.linkTo}
+								large={cta?.fields?.large}
+							>
+								<div className="flex justify-center items-center">
+									<span>{cta.fields?.title}</span>
+									<FontAwesomeIcon
+										className="ml-3 text-lg"
+										icon={faChevronDown}
+									/>
+								</div>
+							</PrimaryButton>
+						)}
+						{linkToJobs && (
+							<Link
+								href={linkToJobs}
+								className="mt-10 p-2 px-8 ease-out duration-300 rounded-full uppercase text-lg mx-1 bg-white"
+							>
+								<div className="flex justify-center items-center">
+									<FontAwesomeIcon className="mr-2 text-lg" icon={faSearch} />
+									<span>JOBS</span>
+								</div>
+							</Link>
+						)}
 					</div>
 
 					<div className="w-full flex flex-wrap justify-center items-center mt-8">

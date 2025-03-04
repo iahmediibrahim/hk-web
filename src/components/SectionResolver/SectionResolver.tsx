@@ -38,19 +38,22 @@ export function SectionResolver({
 	colorVar: string
 }) {
 	// Get the content type ID from the entry
-	const contentType = section.sys.contentType.sys.id as keyof SectionTypeMap
+	const contentType = section?.sys?.contentType?.sys?.id as keyof SectionTypeMap
 	console.log('section', section)
 	console.log('contentType', contentType)
-	const Component = componentMap[contentType]
+	const Component = componentMap[contentType] as (
+		props: SectionTypeMap[typeof contentType],
+	) => ReactNode
+	// componentMap[contentType]
 
 	if (!Component) {
 		console.warn(`No component registered for ${contentType}`)
 		return null
 	}
-	const fields = {
+	const props: SectionTypeMap[keyof SectionTypeMap] = {
 		...section.fields,
 		colorVar,
-	} as SectionTypeMap[typeof contentType]
+	}
 	// Type-safe props passing
-	return <Component {...(fields as any)} />
+	return <Component {...props} />
 }
