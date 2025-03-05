@@ -17,7 +17,6 @@ export const getPageBySlug = async (slug: string, contentType: string) => {
 		if (!response?.items) {
 			throw new Error('Failed to fetch Page')
 		}
-		console.log(response.items[0])
 		return response.items[0] as unknown as ContentfulPage
 	} catch (error) {
 		console.error('Error fetching posts:', error)
@@ -62,7 +61,6 @@ export async function getPageHierarchy(): Promise<SimplifiedPage[]> {
 	const { items: pages } = pagesResponse
 	const { items: subPages } = subPagesResponse
 	const allPages = [...pages, ...subPages] as unknown[] as ContentfulPage[]
-	console.log('allPages', allPages)
 
 	const pageMap = new Map<string, SimplifiedPage>()
 	const rootPages: SimplifiedPage[] = []

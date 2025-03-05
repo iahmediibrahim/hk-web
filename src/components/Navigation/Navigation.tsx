@@ -36,7 +36,7 @@ export function Navigation({ pages }: { pages: SimplifiedPage[] }) {
 
 				<div className="hidden lg:flex flex-col w-full">
 					{/* Top Navigation */}
-					<nav className="flex justify-center items-center space-x-8 py-4 ">
+					<nav className="flex justify-center items-center space-x-4 py-4 ">
 						{pages.map((page) => (
 							<Link
 								key={page.id}

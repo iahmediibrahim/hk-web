@@ -1,5 +1,9 @@
-import { CTA } from '@/lib/contentful'
-import { faChevronDown, faSearch } from '@fortawesome/free-solid-svg-icons'
+import { CTA, Video } from '@/lib/contentful'
+import {
+	faChevronDown,
+	faChevronRight,
+	faSearch,
+} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Link from 'next/link'
 import { HKELogo } from '../HKELogo'
@@ -9,11 +13,12 @@ import { HKILogo } from '../HKILogo'
 import { HKTLogo } from '../HKTLogo'
 import { PrimaryButton } from '../PrimaryButton'
 
-interface HeroSectionProps {
+export interface HeroSectionProps {
 	colorVar?: string
 	paragraph?: string
 	linkToJobs?: string
 	cta?: CTA
+	video: Video
 }
 
 export function HeroSection({
@@ -21,7 +26,11 @@ export function HeroSection({
 	paragraph,
 	linkToJobs,
 	cta,
+	video,
 }: HeroSectionProps) {
+	const HomeLogo = () => <HKILogo color={'var(--dark-grey)'} />
+	const MedicalLogo = () => <HKILogo color={'var(--international-medical)'} />
+
 	return (
 		<section
 			style={{ height: 'calc(100vh - 200px)' }}
@@ -33,14 +42,10 @@ export function HeroSection({
 					loop
 					muted
 					className="object-cover w-full h-full"
-					poster={
-						'https://holdenknight.blob.core.windows.net/videos/children.jpg'
-					}
+					poster={video?.fields?.poster?.fields?.file?.url}
 				>
 					<source
-						src={
-							'https://holdenknight.blob.core.windows.net/videos/children.webm'
-						}
+						src={video?.fields?.video?.fields?.file?.url}
 						type="video/webm"
 					/>
 				</video>
@@ -53,14 +58,10 @@ export function HeroSection({
 						<HKTLogo />
 					) : colorVar === 'healthcare' ? (
 						<HKHLogo />
+					) : colorVar === 'international-medical' ? (
+						<MedicalLogo />
 					) : (
-						<HKILogo
-							color={
-								colorVar === '/'
-									? 'var(--dark-grey)'
-									: 'var(--international-medical-heroBanner)'
-							}
-						/>
+						<HomeLogo />
 					)}
 
 					{paragraph && (
@@ -81,7 +82,11 @@ export function HeroSection({
 									<span>{cta.fields?.title}</span>
 									<FontAwesomeIcon
 										className="ml-3 text-lg"
-										icon={faChevronDown}
+										icon={
+											cta?.fields?.linkTo.includes('#')
+												? faChevronDown
+												: faChevronRight
+										}
 									/>
 								</div>
 							</PrimaryButton>

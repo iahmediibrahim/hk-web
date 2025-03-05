@@ -4,13 +4,10 @@ interface props {
 export function HKILogo({ color }: props) {
 	return (
 		<svg
-			id="Layer_1"
-			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 364.8 203.94"
-			aria-label="Holden Knight Logo"
-			role="img"
-			width="300"
-			height="168"
+			width="364.8"
+			height="203.94"
+			xmlns="http://www.w3.org/2000/svg"
 		>
 			<defs>
 				<style>{`.cls-1{fill:#303030;}.cls-1,.cls-2{stroke-width:0px;}`}</style>
@@ -85,7 +82,6 @@ export function HKILogo({ color }: props) {
 			/>
 			<path
 				className="cls-2"
-				fill={color}
 				d="M178.39,66.2l36.92-39.01c-8.92-6.86-19.99-11.06-31.93-11.27-1.68-.03-3.35.03-4.99.14v50.14Z"
 			/>
 			<path
@@ -203,22 +199,27 @@ export function HKILogo({ color }: props) {
 			/>
 			<path
 				className="cls-2"
+				fill={color}
 				d="M160.59,62.96V20.4c-17.24,7.46-29.72,23.51-32.29,42.56h32.29Z"
 			/>
 			<path
 				className="cls-2"
+				fill={color}
 				d="M178.39,66.2l36.92-39.01c-8.92-6.86-19.99-11.06-31.93-11.27-1.68-.03-3.35.03-4.99.14v50.14Z"
 			/>
 			<path
 				className="cls-2"
+				fill={color}
 				d="M226.3,38.48l-30.17,31.51,29.66,32.86c6.85-9.13,10.85-20.43,10.7-32.53.19-11.78-3.63-22.82-10.19-31.84"
 			/>
 			<path
 				className="cls-2"
+				fill={color}
 				d="M178.39,74.64v49.92c1.19.08,2.38.14,3.58.14,11.68.04,22.48-3.62,31.35-9.81l-34.93-40.25Z"
 			/>
 			<path
 				className="cls-2"
+				fill={color}
 				d="M160.59,77.89h-32.25c2.68,19.29,15.35,34.99,32.25,42.33v-42.33Z"
 			/>
 		</svg>

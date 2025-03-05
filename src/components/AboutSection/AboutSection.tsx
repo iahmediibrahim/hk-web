@@ -47,9 +47,10 @@ export function AboutSection({
 						</p>
 					</div>
 					<div>
-						<p className="text-base sm:text-lg md:text-2xl mb-6 md:mb-8">
-							{paragraph}
-						</p>
+						<div
+							className="text-base sm:text-lg md:text-2xl mb-6 md:mb-8 whitespace-pre-wrap"
+							dangerouslySetInnerHTML={{ __html: paragraph }}
+						/>
 					</div>
 				</div>
 
@@ -57,7 +58,7 @@ export function AboutSection({
 					<div className="w-full md:w-[40%] flex justify-center">
 						<Image
 							className="w-full max-w-[400px] h-auto object-contain"
-							src={img.fields.file.url}
+							src={'https:' + img.fields.file.url}
 							alt={img.fields.file.fileName}
 							width={400}
 							height={300}
@@ -77,7 +78,7 @@ export function AboutSection({
 							<div className="relative aspect-video">
 								<Image
 									className="rounded-t-lg object-cover"
-									src={item.fields.img.fields.file.url}
+									src={'https:' + item.fields.img.fields.file.url}
 									alt={item.fields.img.fields.file.fileName}
 									fill
 									sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"

@@ -1,13 +1,10 @@
 export function HKHLogo() {
 	return (
 		<svg
-			id="Layer_1"
-			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 364.8 203.94"
-			aria-label="Holden Knight Logo"
-			role="img"
-			width="300"
-			height="168"
+			width="364.8"
+			height="203.94"
+			xmlns="http://www.w3.org/2000/svg"
 		>
 			<defs>
 				<style>

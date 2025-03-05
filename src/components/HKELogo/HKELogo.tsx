@@ -4,8 +4,8 @@ export function HKELogo() {
 			xmlns="http://www.w3.org/2000/svg"
 			id="Layer_1"
 			viewBox="0 0 364.8 203.94"
-			width="300"
-			height="168"
+			width="364.8"
+			height="203.94"
 		>
 			<defs>
 				<style>

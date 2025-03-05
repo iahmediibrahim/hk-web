@@ -28,6 +28,12 @@ export type ContentfulImage = {
 		}
 	}
 }
+export type Video = {
+	fields: {
+		poster: ContentfulImage
+		video: ContentfulImage
+	}
+}
 export type CTA = {
 	fields: {
 		title: string

@@ -3,6 +3,7 @@ import { ReactNode } from 'react'
 import { AboutSection, AboutSectionProps } from '../AboutSection'
 import { BenefitsProps, BenefitsSection } from '../BenefitsSection'
 import { HeroBanner, HeroBannerProps } from '../HeroBanner'
+import { HeroSection, HeroSectionProps } from '../HeroSection'
 import { Testimonials, TestimonialsProps } from '../Testimonials'
 
 type SectionTypeMap = {
@@ -10,6 +11,8 @@ type SectionTypeMap = {
 	aboutSection: AboutSectionProps
 	testimonials: TestimonialsProps
 	benefitsSection: BenefitsProps
+	heroSection: HeroSectionProps
+
 	// heroSection: HeroSectionProps
 	// featureGrid: FeatureGridProps
 	// richTextBlock: RichTextProps
@@ -24,6 +27,7 @@ const componentMap: {
 	aboutSection: AboutSection,
 	testimonials: Testimonials,
 	benefitsSection: BenefitsSection,
+	heroSection: HeroSection,
 
 	// heroSection: HeroSection,
 	// featureGrid: FeatureGrid,

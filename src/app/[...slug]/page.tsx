@@ -1,6 +1,5 @@
 import {
 	Breadcrumb,
-	HeroSection,
 	HowItWorks,
 	InfoSection,
 	SectionResolver,
@@ -20,13 +19,12 @@ export default async function Page({
 	if (!page) {
 		notFound()
 	}
-	console.log('page:::', page.fields)
 
 	const colorVar = slug[0] === '' ? 'dark-grey' : slug[0]
-	console.log('colorVar', colorVar)
+
 	return (
 		<main>
-			<HeroSection
+			{/* <HeroSection
 				colorVar={colorVar}
 				paragraph="As part of our mission to ensure no child is left behind, we are excited to launch a new initiative, with social value at its heart. This campaign aim"
 				linkToJobs="/jobs"
@@ -37,7 +35,7 @@ export default async function Page({
 						large: true,
 					},
 				}}
-			/>
+			/> */}
 
 			{contentType === 'subPage' && (
 				<Breadcrumb
@@ -47,7 +45,6 @@ export default async function Page({
 				/>
 			)}
 
-			{contentType === 'page' && <Breadcrumb path={slug} />}
 			{page.fields.sections?.map((section) => (
 				<SectionResolver
 					key={section.sys.id}

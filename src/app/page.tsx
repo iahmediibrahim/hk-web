@@ -1,9 +1,21 @@
-import { HeroSection } from '@/components'
+import { SectionResolver } from '@/components'
+import { getPageBySlug } from '@/lib/contentful'
+import { notFound } from 'next/navigation'
 
-export default function Home() {
+export default async function Home() {
+	const page = await getPageBySlug('home', 'page')
+	if (!page) {
+		notFound()
+	}
 	return (
 		<div className=" ">
-			<HeroSection colorVar={'/'} />
+			{page?.fields.sections?.map((section) => (
+				<SectionResolver
+					key={section.sys.id}
+					section={section}
+					colorVar={'dark-grey'}
+				/>
+			))}
 		</div>
 	)
 }

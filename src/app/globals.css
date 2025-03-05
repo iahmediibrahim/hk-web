@@ -2,6 +2,36 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+	font-family: 'Avenir';
+	src: url(../../public/fonts/AvenirLight.ttf);
+	font-weight: 300;
+}
+
+@font-face {
+	font-family: 'Avenir';
+	src: url(../../public/fonts/AvenirRegular.ttf);
+	font-weight: 400;
+}
+
+@font-face {
+	font-family: 'Avenir';
+	src: url(../../public/fonts/AvenirBook.ttf);
+	font-weight: 500;
+}
+
+@font-face {
+	font-family: 'Avenir';
+	src: url(../../public/fonts/AvenirBlack.ttf);
+	font-weight: 800;
+}
+
+@font-face {
+	font-family: 'Avenir';
+	src: url(../../public/fonts/AvenirHeavy.ttf);
+	font-weight: 900;
+}
+
 :root {
 	--background: #ffffff;
 	--foreground: #0a0a0a;
