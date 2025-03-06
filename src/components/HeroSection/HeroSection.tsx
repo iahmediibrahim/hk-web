@@ -65,14 +65,16 @@ export function HeroSection({
 					)}
 
 					{paragraph && (
-						<p className="md:text-2xl xs:text-lg font-normal w-full flex justify-center my-3 opacity-70 -mb-1">
+						<p className="md:text-2xl xs:text-lg font-normal w-full flex justify-center my-3 opacity-70">
 							<span className="md:w-6/12 xs:w-full text-center">
 								{paragraph}
 							</span>
 						</p>
 					)}
 
-					<div className={`w-full flex flex-wrap justify-center items-center`}>
+					<div
+						className={`w-full flex flex-wrap justify-center items-center mt-6`}
+					>
 						{cta && (
 							<PrimaryButton
 								href={cta?.fields?.linkTo}
@@ -94,7 +96,7 @@ export function HeroSection({
 						{linkToJobs && (
 							<Link
 								href={linkToJobs}
-								className="mt-10 p-2 px-8 ease-out duration-300 rounded-full uppercase text-lg mx-1 bg-white"
+								className="mt-4 p-2 px-8 ease-out duration-300 rounded-full uppercase text-lg mx-1 bg-white"
 							>
 								<div className="flex justify-center items-center">
 									<FontAwesomeIcon className="mr-2 text-lg" icon={faSearch} />

@@ -39,6 +39,7 @@ export type CTA = {
 		title: string
 		linkTo: string
 		large: boolean
+		outlined: boolean
 	}
 }
 export interface SimplifiedPage {

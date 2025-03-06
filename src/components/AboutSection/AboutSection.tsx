@@ -1,16 +1,10 @@
+import { ContentfulImage } from '@/lib/contentful'
 import Image from 'next/image'
 
 export interface AboutSectionProps {
 	title: string
 	paragraph: string
-	img?: {
-		fields: {
-			file: {
-				url: string
-				fileName: string
-			}
-		}
-	}
+	img?: ContentfulImage
 	specialisms?: Array<{
 		fields: {
 			img: {

@@ -1,5 +1,6 @@
 import {
 	Breadcrumb,
+	CardWithIcon,
 	HowItWorks,
 	InfoSection,
 	SectionResolver,
@@ -24,19 +25,6 @@ export default async function Page({
 
 	return (
 		<main>
-			{/* <HeroSection
-				colorVar={colorVar}
-				paragraph="As part of our mission to ensure no child is left behind, we are excited to launch a new initiative, with social value at its heart. This campaign aim"
-				linkToJobs="/jobs"
-				cta={{
-					fields: {
-						title: 'learn more',
-						linkTo: '#about',
-						large: true,
-					},
-				}}
-			/> */}
-
 			{contentType === 'subPage' && (
 				<Breadcrumb
 					path={slug}
@@ -44,7 +32,6 @@ export default async function Page({
 					textColor="white"
 				/>
 			)}
-
 			{page.fields.sections?.map((section) => (
 				<SectionResolver
 					key={section.sys.id}
@@ -52,6 +39,11 @@ export default async function Page({
 					colorVar={colorVar}
 				/>
 			))}
+			<CardWithIcon
+				icon="user"
+				heading="Our Te"
+				paragraph="Over 50 years experience recruiting and placing staff in the Health & Social care sector making us one of the most knowledgeable teams in the UK."
+			/>
 			<Faqs colorVar={colorVar} heading="FAQS" />
 			<HowItWorks
 				paragraphs={[
