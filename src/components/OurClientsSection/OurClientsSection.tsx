@@ -1,46 +1,50 @@
-'use client'
-
+import { ContentfulImage } from '@/lib/contentful'
 import Image from 'next/image'
 
-interface OurClientsSectionProps {
-	heading: string
+export interface OurClientsSectionProps {
+	title: string
 	paragraph: string
-	slug: string
-	images: {
-		src: string
-		alt?: string
-	}[]
+	colorVar: string
+	clients: ContentfulImage[]
 }
 
 export function OurClientsSection({
-	heading,
+	title,
 	paragraph,
-	slug,
-	images,
+	colorVar,
+	clients,
 }: OurClientsSectionProps) {
 	return (
-		<div className="container mx-auto px-4 py-12">
-			<div className="text-left mb-12">
-				<h2
-					className="text-4xl font-bold mb-4"
-					style={{
-						color: `var(--${slug})`,
-					}}
-				>
-					{heading}
-				</h2>
-				<p className="text-gray-600 max-w-2xl">{paragraph}</p>
+		<div id="our-clients" className="container mx-auto px-4  py-12">
+			<div className="flex flex-col md:flex-row justify-between items-center gap-8 text-black">
+				<div className="w-full md:w-[45%] space-y-6">
+					<div className="w-full my-6 md:my-10">
+						<p
+							style={{ color: `var(--${colorVar})` }}
+							className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight md:leading-[3.5rem]"
+						>
+							{title}
+						</p>
+					</div>
+					<div>
+						<p className="text-base sm:text-lg md:text-2xl mb-6 md:mb-8">
+							{paragraph}
+						</p>
+					</div>
+				</div>
 			</div>
-			<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-				{images.map((image, index) => (
+
+			<div className="grid grid-cols-2  md:grid-cols-3 lg:grid-cols-4 gap-8">
+				{clients.map((image, index) => (
 					<div key={index} className="flex items-center justify-center p-4">
-						<div className="w-32 h-32 flex items-center justify-center">
+						<div className="w-80 h-44 flex items-center justify-center transition-transform duration-300 hover:scale-110">
 							<Image
 								className="w-full h-full object-contain"
-								src={image.src}
-								alt={image.alt || 'Client logo'}
-								width={128}
-								height={128}
+								src={'https:' + image.fields.file.url}
+								alt={image.fields.file.fileName}
+								sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+								width={320}
+								height={176}
 							/>
 						</div>
 					</div>

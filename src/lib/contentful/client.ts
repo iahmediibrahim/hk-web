@@ -64,7 +64,7 @@ export async function getPageHierarchy(): Promise<SimplifiedPage[]> {
 
 	const pageMap = new Map<string, SimplifiedPage>()
 	const rootPages: SimplifiedPage[] = []
-	console.log('allPages', allPages)
+	// console.log('allPages', allPages)
 	// First pass: Create simplified pages
 	allPages.forEach((page: ContentfulPage) => {
 		const simplified: SimplifiedPage = {

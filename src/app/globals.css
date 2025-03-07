@@ -47,6 +47,7 @@
 	--academy-heroBanner: #52a8cd;
 	--dark-grey-heroBanner: #525252;
 	--dark-grey: #303030;
+	--dark-grey-rgb: 79, 79, 79;
 }
 
 @media (prefers-color-scheme: dark) {

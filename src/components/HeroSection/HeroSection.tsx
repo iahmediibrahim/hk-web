@@ -73,7 +73,7 @@ export function HeroSection({
 					)}
 
 					<div
-						className={`w-full flex flex-wrap justify-center items-center mt-6`}
+						className={`w-full flex flex-wrap justify-center items-center mt-6 gap-3`}
 					>
 						{cta && (
 							<PrimaryButton
@@ -81,7 +81,7 @@ export function HeroSection({
 								large={cta?.fields?.large}
 							>
 								<div className="flex justify-center items-center">
-									<span>{cta.fields?.title}</span>
+									<span className="text-base">{cta.fields?.title}</span>
 									<FontAwesomeIcon
 										className="ml-3 text-lg"
 										icon={
@@ -94,15 +94,12 @@ export function HeroSection({
 							</PrimaryButton>
 						)}
 						{linkToJobs && (
-							<Link
-								href={linkToJobs}
-								className="mt-4 p-2 px-8 ease-out duration-300 rounded-full uppercase text-lg mx-1 bg-white"
-							>
+							<PrimaryButton href={linkToJobs} large bgWhite>
 								<div className="flex justify-center items-center">
 									<FontAwesomeIcon className="mr-2 text-lg" icon={faSearch} />
-									<span>JOBS</span>
+									<span className="text-base">JOBS</span>
 								</div>
-							</Link>
+							</PrimaryButton>
 						)}
 					</div>
 

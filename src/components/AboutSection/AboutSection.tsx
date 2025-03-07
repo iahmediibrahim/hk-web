@@ -7,14 +7,7 @@ export interface AboutSectionProps {
 	img?: ContentfulImage
 	specialisms?: Array<{
 		fields: {
-			img: {
-				fields: {
-					file: {
-						url: string
-						fileName: string
-					}
-				}
-			}
+			img: ContentfulImage
 			title: string
 		}
 	}>

@@ -20,7 +20,7 @@ export function Navigation({ pages }: { pages: SimplifiedPage[] }) {
 			<section className="header fixed inset-x-0 top-0 flex flex-row justify-between py-2 px-2 items-center backdrop-blur-lg bg-white/80 shadow-sm z-50">
 				<Link
 					href={`/`}
-					className="flex justify-center items-center w-12 h-12  bg-primary-hover  hover:bg-gray-200/60 rounded-full"
+					className="flex justify-center items-center w-12 h-12  bg-primary-hover  hover:bg-gray-200/60 rounded-xl"
 				>
 					<Logo color="black" />
 				</Link>
@@ -32,7 +32,7 @@ export function Navigation({ pages }: { pages: SimplifiedPage[] }) {
 							<Link
 								key={page.id}
 								href={`/${page.slugPath.join('/')}`}
-								className="px-4 py-2 text-sm font-medium rounded-full hover:bg-primary-hover"
+								className="px-4 py-2 text-sm font-medium rounded-xl hover:bg-primary-hover"
 								style={
 									pathname === `/${page.slugPath.join('/')}`
 										? {
@@ -50,7 +50,7 @@ export function Navigation({ pages }: { pages: SimplifiedPage[] }) {
 				{/* Mobile Toggle */}
 				<button
 					onClick={() => setIsOpen(!isOpen)}
-					className="lg:hidden flex justify-center items-center w-12 h-12  bg-primary-hover  hover:bg-gray-200/60 rounded-full"
+					className="lg:hidden flex justify-center items-center w-12 h-12  bg-primary-hover  hover:bg-gray-200/60 rounded-xl"
 				>
 					<svg
 						className="w-6 h-6"

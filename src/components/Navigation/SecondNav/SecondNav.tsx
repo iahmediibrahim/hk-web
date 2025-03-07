@@ -27,8 +27,8 @@ export function SecondNav({ pages }: { pages: SimplifiedPage[] }) {
 									    transition-all duration-200 ease-in
  inline-flex items-center ${
 		pathname === `/${joinSlugs(child.slugPath)}`
-			? 'bg-primary-active rounded-full'
-			: `hover:bg-primary-active hover:rounded-full`
+			? 'bg-primary-active rounded-xl'
+			: `hover:bg-primary-active hover:rounded-xl`
  }`}
 							>
 								{child.title.toUpperCase()}

@@ -45,7 +45,7 @@ export function Testimonials({
 						className="flex-[0_0_100%] min-w-0 md:flex-[0_0_50%] p-4"
 					>
 						<div className="bg-white/80 p-8 rounded-2xl shadow-lg transform transition-all duration-500 hover:shadow-2xl hover:scale-105 backdrop-blur-lg h-full flex flex-col">
-							<blockquote className="text-gray-700 text-lg md:text-xl mb-8 leading-relaxed line-clamp-6">
+							<blockquote className="text-gray-700 text-lg md:text-xl mb-8  ">
 								&ldquo;{testimonial?.fields.paragraph}&rdquo;
 							</blockquote>
 							<div className="flex items-center gap-5 mt-auto">

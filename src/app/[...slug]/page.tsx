@@ -1,6 +1,5 @@
 import {
 	Breadcrumb,
-	CardWithIcon,
 	HowItWorks,
 	InfoSection,
 	SectionResolver,
@@ -39,11 +38,7 @@ export default async function Page({
 					colorVar={colorVar}
 				/>
 			))}
-			<CardWithIcon
-				icon="user"
-				heading="Our Te"
-				paragraph="Over 50 years experience recruiting and placing staff in the Health & Social care sector making us one of the most knowledgeable teams in the UK."
-			/>
+
 			<Faqs colorVar={colorVar} heading="FAQS" />
 			<HowItWorks
 				paragraphs={[

@@ -42,7 +42,7 @@ export function Breadcrumb({
 													backgroundColor === 'transparent'
 														? 'bg-primary-hover'
 														: 'bg-primary-active'
-											  } px-1.5 py-0.5 sm:px-2 sm:py-1 rounded`
+											  } px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-xl`
 											: ''
 									}`}
 							>

@@ -8,7 +8,9 @@ import {
 } from '../DynamicCardSection'
 import { HeroBanner, HeroBannerProps } from '../HeroBanner'
 import { HeroSection, HeroSectionProps } from '../HeroSection'
+import { OurClientsSection, OurClientsSectionProps } from '../OurClientsSection'
 import { Testimonials, TestimonialsProps } from '../Testimonials'
+import { WhyUsSection, WhyUsSectionProps } from '../WhyUsSection'
 
 type SectionTypeMap = {
 	heroBanner: HeroBannerProps
@@ -17,7 +19,8 @@ type SectionTypeMap = {
 	benefitsSection: BenefitsProps
 	heroSection: HeroSectionProps
 	dynamicCardSection: DynamicCardSectionProps
-
+	whyUsSection: WhyUsSectionProps
+	ourClientsSection: OurClientsSectionProps
 	// heroSection: HeroSectionProps
 	// featureGrid: FeatureGridProps
 	// richTextBlock: RichTextProps
@@ -34,7 +37,8 @@ const componentMap: {
 	benefitsSection: BenefitsSection,
 	heroSection: HeroSection,
 	dynamicCardSection: DynamicCardSection,
-	// heroSection: HeroSection,
+	whyUsSection: WhyUsSection,
+	ourClientsSection: OurClientsSection,
 	// featureGrid: FeatureGrid,
 	// richTextBlock: RichTextBlock,
 }
