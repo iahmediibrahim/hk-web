@@ -17,6 +17,7 @@ export type ContentfulPage = {
 export type ContentfulImage = {
 	fields: {
 		file: {
+			contentType: string
 			url: string
 			fileName: string
 			details: {

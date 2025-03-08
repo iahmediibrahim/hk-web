@@ -1,5 +1,5 @@
 'use client'
-import { ContentfulImage } from '@/lib/contentful/types'
+import { ContentfulImage, CTA } from '@/lib/contentful/types'
 import Image from 'next/image'
 import CountUp from 'react-countup'
 import { PrimaryButton } from '../PrimaryButton'
@@ -7,13 +7,7 @@ import { PrimaryButton } from '../PrimaryButton'
 export interface HeroBannerProps {
 	heading?: string
 	paragraph?: string
-	cta?: {
-		fields: {
-			ctaTitle: string
-			linkTo: string
-			large: boolean
-		}
-	}
+	cta?: CTA
 	img?: ContentfulImage
 	counter?: {
 		fields: {
@@ -33,7 +27,6 @@ export function HeroBanner({
 	counter,
 	colorVar,
 }: HeroBannerProps) {
-	console.log('img.fields?.file.url', img?.fields)
 	return (
 		<div
 			className="pb-16"
@@ -52,7 +45,7 @@ export function HeroBanner({
 							)}
 
 							{paragraph && (
-								<div className="text-xl md:w-9/12 xs:w-full leading-9">
+								<div className="text-xl md:w-9/12 xs:w-full leading-9 mb-6">
 									{paragraph}
 								</div>
 							)}
@@ -61,8 +54,9 @@ export function HeroBanner({
 								<PrimaryButton
 									href={cta?.fields?.linkTo}
 									large={cta.fields.large}
+									outlined={cta.fields.outlined}
 								>
-									{cta?.fields?.ctaTitle}
+									{cta?.fields?.title}
 								</PrimaryButton>
 							)}
 						</div>

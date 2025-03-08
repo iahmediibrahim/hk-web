@@ -1,5 +1,8 @@
-import { ContentfulImage } from '@/lib/contentful'
+import { ContentfulImage, CTA } from '@/lib/contentful'
+import { faCheck } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Image from 'next/image'
+import { PrimaryButton } from '../PrimaryButton'
 
 export interface AboutSectionProps {
 	title: string
@@ -11,6 +14,9 @@ export interface AboutSectionProps {
 			title: string
 		}
 	}>
+	specialismsTitle?: string
+	specialismsTextList?: string[]
+	cta: CTA
 	colorVar: string
 }
 
@@ -20,6 +26,9 @@ export function AboutSection({
 	img,
 	colorVar,
 	specialisms,
+	specialismsTitle,
+	specialismsTextList,
+	cta,
 }: AboutSectionProps) {
 	return (
 		<div id="about" className="container mx-auto px-4  py-12">
@@ -43,18 +52,38 @@ export function AboutSection({
 
 				{img && (
 					<div className="w-full md:w-[40%] flex justify-center">
-						<Image
-							className="w-full max-w-[400px] h-auto object-contain"
-							src={'https:' + img.fields.file.url}
-							alt={img.fields.file.fileName}
-							width={400}
-							height={300}
-							priority
-						/>
+						{img.fields.file.contentType.includes('image') ? (
+							<Image
+								className="w-full max-w-[400px] h-auto object-contain"
+								src={'https:' + img.fields.file.url}
+								alt={img.fields.file.fileName}
+								width={400}
+								height={300}
+								priority
+							/>
+						) : img.fields.file.contentType.includes('video') ? (
+							<video
+								className="w-full max-w-[600px] h-auto"
+								controls
+								autoPlay
+								muted
+								loop
+							>
+								<source
+									src={'https:' + img.fields.file.url}
+									type={img.fields.file.contentType}
+								/>
+								Your browser does not support the video tag.
+							</video>
+						) : null}
 					</div>
 				)}
 			</div>
-
+			{specialismsTitle && (
+				<h3 className="text-xl md:text-2xl text-black my-8">
+					{specialismsTitle}
+				</h3>
+			)}
 			{specialisms && (
 				<div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6 my-10 mx-3 md:mx-10 lg:mx-12">
 					{specialisms.map((item, index) => (
@@ -78,6 +107,28 @@ export function AboutSection({
 							</div>
 						</div>
 					))}
+				</div>
+			)}
+			{specialismsTextList && (
+				<div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+					{specialismsTextList.map((item, index) => (
+						<div key={index} className="flex items-center gap-2">
+							<FontAwesomeIcon icon={faCheck} />
+							<p className="text-base md:text-lg whitespace-pre-wrap">{item}</p>
+						</div>
+					))}
+				</div>
+			)}
+
+			{cta && (
+				<div className="mt-8">
+					<PrimaryButton
+						href={cta.fields.linkTo}
+						large={cta.fields.large}
+						outlined={cta.fields.outlined}
+					>
+						{cta.fields.title}
+					</PrimaryButton>
 				</div>
 			)}
 		</div>

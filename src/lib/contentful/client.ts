@@ -50,11 +50,13 @@ export async function getPageHierarchy(): Promise<SimplifiedPage[]> {
 			content_type: 'page',
 			select: ['fields.title', 'fields.slug', 'fields.parentPage'],
 			include: 3,
+			order: ['sys.createdAt'],
 		}),
 		client.getEntries<ContentfulPage>({
 			content_type: 'subPage',
 			select: ['fields.title', 'fields.slug', 'fields.parentPage'],
 			include: 3,
+			order: ['sys.createdAt'],
 		}),
 	])
 

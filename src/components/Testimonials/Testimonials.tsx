@@ -42,7 +42,7 @@ export function Testimonials({
 				{testimonials?.map((testimonial, index) => (
 					<div
 						key={index}
-						className="flex-[0_0_100%] min-w-0 md:flex-[0_0_50%] p-4"
+						className="flex-[0_0_100%] min-w-0 md:flex-[0_0_50%] px-4 pb-20 pt-4"
 					>
 						<div className="bg-white/80 p-8 rounded-2xl shadow-lg transform transition-all duration-500 hover:shadow-2xl hover:scale-105 backdrop-blur-lg h-full flex flex-col">
 							<blockquote className="text-gray-700 text-lg md:text-xl mb-8  ">

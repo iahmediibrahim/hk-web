@@ -32,7 +32,7 @@ export function DynamicCardSection({
 						const { fields } = item
 						return (
 							<div
-								className="flex-[0_0_100%] min-w-0 md:flex-[0_0_50%] lg:flex-[0_0_33.33%] p-4"
+								className="flex-[0_0_100%] min-w-0 md:flex-[0_0_50%] lg:flex-[0_0_33.33%]  px-4 pb-20 pt-4"
 								key={index}
 							>
 								<HomeCard {...fields} />

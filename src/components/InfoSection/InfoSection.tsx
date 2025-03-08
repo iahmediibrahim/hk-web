@@ -38,7 +38,6 @@ export function InfoSection({
 	textBg = false,
 	colorVar,
 }: InfoSectionProps) {
-	console.log(image)
 	const ImageSection = () => (
 		<div className="md:w-6/12 w-full h-full">
 			{/* {image && (
