@@ -54,7 +54,7 @@ export function AboutSection({
 					<div className="w-full md:w-[40%] flex justify-center">
 						{img.fields.file.contentType.includes('image') ? (
 							<Image
-								className="w-full max-w-[400px] h-auto object-contain"
+								className="w-full max-w-[400px] h-auto object-contain rounded-lg"
 								src={'https:' + img.fields.file.url}
 								alt={img.fields.file.fileName}
 								width={400}
@@ -113,7 +113,7 @@ export function AboutSection({
 				<div className="grid grid-cols-2 md:grid-cols-3 gap-4">
 					{specialismsTextList.map((item, index) => (
 						<div key={index} className="flex items-center gap-2">
-							<FontAwesomeIcon icon={faCheck} />
+							<FontAwesomeIcon icon={faCheck} color={`var(--${colorVar})`} />
 							<p className="text-base md:text-lg whitespace-pre-wrap">{item}</p>
 						</div>
 					))}
@@ -121,7 +121,7 @@ export function AboutSection({
 			)}
 
 			{cta && (
-				<div className="mt-8">
+				<div className="mt-16 flex md:block justify-center text-center">
 					<PrimaryButton
 						href={cta.fields.linkTo}
 						large={cta.fields.large}

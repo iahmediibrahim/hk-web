@@ -41,10 +41,9 @@ export const PrimaryButton = ({
 	}
 
 	return (
-		<div className="mt-auto">
-			<button
-				onClick={handleClick}
-				className={`
+		<button
+			onClick={handleClick}
+			className={`
           ${
 						disabled
 							? 'opacity-50 cursor-not-allowed'
@@ -59,39 +58,38 @@ export const PrimaryButton = ({
           ${outlined ? 'bg-transparent' : ''} 
           ${className}
         `}
-				onMouseEnter={() => setIsHovered(true)}
-				onMouseLeave={() => setIsHovered(false)}
-				style={{
-					backgroundColor: outlined
-						? 'transparent'
-						: bgWhite
-						? '#fff'
-						: `var(--${mainPage})`,
-					borderColor: outlined
-						? isHovered
-							? 'rgba(79, 79, 79, 0.2)'
-							: `var(--${mainPage})`
-						: isHovered
-						? `var(--${mainPage})`
-						: '#fff',
-					color: outlined ? `var(--${mainPage})` : bgWhite ? '#000' : '#fff',
-					boxShadow: isHovered
-						? `0 0 20px rgba(var(--${mainPage}-rgb), 0.3), 
+			onMouseEnter={() => setIsHovered(true)}
+			onMouseLeave={() => setIsHovered(false)}
+			style={{
+				backgroundColor: outlined
+					? 'transparent'
+					: bgWhite
+					? '#fff'
+					: `var(--${mainPage})`,
+				borderColor: outlined
+					? isHovered
+						? 'rgba(79, 79, 79, 0.2)'
+						: `var(--${mainPage})`
+					: isHovered
+					? `var(--${mainPage})`
+					: '#fff',
+				color: outlined ? `var(--${mainPage})` : bgWhite ? '#000' : '#fff',
+				boxShadow: isHovered
+					? `0 0 20px rgba(var(--${mainPage}-rgb), 0.3), 
                0 6px 12px rgba(0, 0, 0, 0.2)`
-						: `0 4px 6px rgba(0, 0, 0, 0.1)`,
-					transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+					: `0 4px 6px rgba(0, 0, 0, 0.1)`,
+				transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+			}}
+			type={type}
+			{...props}
+		>
+			<span className="relative z-10">{children}</span>
+			<span
+				className="absolute inset-0 bg-black/5 transform origin-left transition-transform duration-300 ease-out"
+				style={{
+					transform: isHovered ? 'scaleX(1)' : 'scaleX(0)',
 				}}
-				type={type}
-				{...props}
-			>
-				<span className="relative z-10">{children}</span>
-				<span
-					className="absolute inset-0 bg-black/5 transform origin-left transition-transform duration-300 ease-out"
-					style={{
-						transform: isHovered ? 'scaleX(1)' : 'scaleX(0)',
-					}}
-				/>
-			</button>
-		</div>
+			/>
+		</button>
 	)
 }

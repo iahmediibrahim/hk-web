@@ -70,3 +70,43 @@ body {
 .swiper-slide {
 	width: auto !important;
 }
+blockquote {
+	font-style: italic;
+	font-size: 1.25rem;
+	line-height: 1.75;
+	padding: 1rem 1rem;
+	margin: 2rem 0;
+	position: relative;
+}
+blockquote p {
+	padding: 1rem;
+}
+blockquote::before {
+	content: '"';
+	font-size: 4rem;
+	position: absolute;
+	left: 0;
+	top: 0;
+	color: var(--dark-grey);
+	opacity: 0.2;
+	font-family: Georgia, serif;
+}
+
+blockquote::after {
+	content: '"';
+	font-size: 4rem;
+	position: absolute;
+	right: 0;
+	bottom: -3rem;
+	color: var(--dark-grey);
+	opacity: 0.2;
+	font-family: Georgia, serif;
+}
+
+p {
+	font-size: 1.125rem /* 18px */;
+	line-height: 1.75rem /* 28px */;
+}
+.rich-text a {
+	text-decoration: underline;
+}

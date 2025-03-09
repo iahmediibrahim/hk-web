@@ -6,8 +6,11 @@ import {
 	DynamicCardSection,
 	DynamicCardSectionProps,
 } from '../DynamicCardSection'
+import { Faqs, FaqsProps } from '../Faqs'
 import { HeroBanner, HeroBannerProps } from '../HeroBanner'
 import { HeroSection, HeroSectionProps } from '../HeroSection'
+import { HowItWorksSection, HowItWorksSectionProps } from '../HowItWorksSection'
+import { InfoSection, InfoSectionProps } from '../InfoSection'
 import { OurClientsSection, OurClientsSectionProps } from '../OurClientsSection'
 import { Testimonials, TestimonialsProps } from '../Testimonials'
 import { WhyUsSection, WhyUsSectionProps } from '../WhyUsSection'
@@ -21,10 +24,9 @@ type SectionTypeMap = {
 	dynamicCardSection: DynamicCardSectionProps
 	whyUsSection: WhyUsSectionProps
 	ourClientsSection: OurClientsSectionProps
-	// heroSection: HeroSectionProps
-	// featureGrid: FeatureGridProps
-	// richTextBlock: RichTextProps
-	// Add more section types as needed
+	infoSection: InfoSectionProps
+	howItWorksSection: HowItWorksSectionProps
+	faqs: FaqsProps
 }
 
 // Component map with TypeScript enforcement
@@ -39,8 +41,9 @@ const componentMap: {
 	dynamicCardSection: DynamicCardSection,
 	whyUsSection: WhyUsSection,
 	ourClientsSection: OurClientsSection,
-	// featureGrid: FeatureGrid,
-	// richTextBlock: RichTextBlock,
+	infoSection: InfoSection,
+	howItWorksSection: HowItWorksSection,
+	faqs: Faqs,
 }
 
 export function SectionResolver({

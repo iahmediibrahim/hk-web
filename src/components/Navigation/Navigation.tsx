@@ -10,11 +10,9 @@ import { MobileNavItem } from './MobileNavItem'
 export function Navigation({ pages }: { pages: SimplifiedPage[] }) {
 	const [isOpen, setIsOpen] = useState(false)
 	const pathname = usePathname()
-
 	const activeMainPage = pages.find((page) => {
 		return pathname?.startsWith(`/${page.slugPath.join('/')}`)
 	})
-
 	return (
 		<>
 			<section className="header fixed inset-x-0 top-0 flex flex-row justify-between py-2 px-2 items-center backdrop-blur-lg bg-white/80 shadow-sm z-50">
@@ -34,7 +32,7 @@ export function Navigation({ pages }: { pages: SimplifiedPage[] }) {
 								href={`/${page.slugPath.join('/')}`}
 								className="px-4 py-2 text-sm font-medium rounded-xl hover:bg-primary-hover"
 								style={
-									pathname === `/${page.slugPath.join('/')}`
+									pathname.includes(page.slug)
 										? {
 												backgroundColor: `rgb(from var(--${activeMainPage?.slug}) r g b / 10%)`,
 												color: `var(--${activeMainPage?.slug})`,

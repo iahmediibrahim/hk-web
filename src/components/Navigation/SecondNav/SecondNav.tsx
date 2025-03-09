@@ -26,7 +26,7 @@ export function SecondNav({ pages }: { pages: SimplifiedPage[] }) {
 								className={`px-4 py-2 text-sm font-medium
 									    transition-all duration-200 ease-in
  inline-flex items-center ${
-		pathname === `/${joinSlugs(child.slugPath)}`
+		pathname.includes(child.slug)
 			? 'bg-primary-active rounded-xl'
 			: `hover:bg-primary-active hover:rounded-xl`
  }`}

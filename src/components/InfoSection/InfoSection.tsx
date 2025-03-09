@@ -1,18 +1,17 @@
+import { ContentfulImage, CTA } from '@/lib/contentful'
+import { Document } from '@contentful/rich-text-types'
+import Image from 'next/image'
 import { InfoStepCard } from '../InfoStepCard'
 import { ListComponent } from '../ListComponent'
 import { PrimaryButton } from '../PrimaryButton'
+import { RichText } from '../RichText/RichText'
 
 export interface InfoSectionProps {
 	heading: string
-	paragraph: string
-	cta?: {
-		title: string
-		link: string
-	}
-	image?: {
-		src: string
-		alt: string
-	}
+	paragraph: Document
+	paragraph2: string
+	cta?: CTA
+	img?: ContentfulImage
 	imagePosition?: 'left' | 'right'
 	textBg?: boolean
 	colorVar?: string
@@ -22,97 +21,103 @@ export interface InfoSectionProps {
 	}[]
 	cardList?: {
 		text: string
-		stepNumber?: number
-		paragraph?: string
+		stepNumber: number
+		paragraph: string
 	}[]
 }
 
 export function InfoSection({
 	heading,
 	paragraph,
+	paragraph2,
 	list,
 	cardList,
 	cta,
-	image,
+	img,
 	imagePosition = 'left',
 	textBg = false,
 	colorVar,
 }: InfoSectionProps) {
+	console.log('parag', paragraph)
 	const ImageSection = () => (
-		<div className="md:w-6/12 w-full h-full">
-			{/* {image && (
+		<div
+			className={`md:w-1/2 w-full overflow-hidden shadow-xl  ${
+				imagePosition === 'left' ? 'rounded-l-lg' : 'rounded-r-lg'
+			}`}
+		>
+			{img && (
 				<Image
-					className="w-full h-full object-cover"
-					src={image?.src}
-					alt={image?.alt}
+					className="w-full h-full object-contain transition-transform duration-500 hover:scale-102"
+					src={'https:' + img.fields.file.url}
+					alt={img.fields.file.fileName}
 					width={1920}
 					height={1080}
+					priority
 				/>
-			)} */}
+			)}
 		</div>
 	)
 
 	const ContentSection = () => (
 		<div
-			className={`${image ? 'md:w-6/12' : 'w-full'} p-12 h-full flex flex-col ${
-				image ? 'justify-center' : 'items-center'
+			className={`${
+				img ? 'md:w-1/2' : 'w-full'
+			} px-6 py-10 md:px-10 h-full flex flex-col ${
+				img ? 'justify-center' : 'items-center'
+			} backdrop-blur-md ${
+				img
+					? imagePosition === 'left'
+						? 'rounded-r-lg'
+						: 'rounded-l-lg'
+					: 'rounded-lg'
 			}`}
 			style={{
-				backgroundColor: textBg ? `var(--${colorVar}-heroBanner)` : 'white',
+				backgroundColor: textBg
+					? `var(--${colorVar}-heroBanner)`
+					: 'rgba(255, 255, 255, 0.95)',
+				boxShadow: '0 4px 6px rgba(0, 0, 0, 0.05)',
 			}}
 		>
 			<div
-				className={`text-lg ${!image && 'text-center'}`}
+				className={`text-lg ${!img && 'text-center'} space-y-5`}
 				style={{ color: textBg ? 'white' : 'black' }}
 			>
-				<h2 className="md:text-5xl text-4xl font-black mb-7">{heading}</h2>
+				<h2 className="text-2xl sm:text-3xl md:text-4xl font-black tracking-tight leading-tight">
+					{heading}
+				</h2>
+				{paragraph && <RichText content={paragraph} />}
 				{list && <ListComponent list={list} colorVar={colorVar} />}
-				{cardList && (
-					<InfoStepCard
-						cardList={[
-							{
-								text: 'dasdasd',
-								stepNumber: 1,
-								paragraph:
-									'The average salary for an Adult Social Worker is $45,000 to $55,000 per year. The average age for an Adult Social Worker is 25 to 34 years old.',
-							},
-							{
-								stepNumber: 1,
-								paragraph:
-									'The average salary for an Adult Social Worker is $45,000 to $55,000 per year. The average age for an Adult Social Worker is 25 to 34 years old.',
-							},
-							{
-								stepNumber: 1,
-								paragraph:
-									'The average salary for an Adult Social Worker is $45,000 to $55,000 per year. The average age for an Adult Social Worker is 25 to 34 years old.',
-							},
-							{
-								stepNumber: 1,
-								paragraph:
-									'The average salary for an Adult Social Worker is $45,000 to $55,000 per year. The average age for an Adult Social Worker is 25 to 34 years old.',
-							},
-						]}
-						colorVar={colorVar}
+				{cardList && <InfoStepCard cardList={cardList} colorVar={colorVar} />}
+				{paragraph2 && (
+					<div
+						className="text-lg opacity-90 leading-relaxed"
+						dangerouslySetInnerHTML={{ __html: paragraph2 }}
 					/>
 				)}
-				<p>{paragraph}</p>
 			</div>
 			{cta && (
-				<PrimaryButton href={cta.link} className={!image ? 'mx-auto mt-6' : ''}>
-					{cta.title}
-				</PrimaryButton>
+				<div className="mt-16 flex md:block justify-center text-center">
+					<PrimaryButton
+						href={cta?.fields?.linkTo}
+						large={cta?.fields?.large}
+						outlined={cta?.fields?.outlined}
+						className={`${
+							!img ? 'mx-auto' : ''
+						} mt-6 transform transition-all duration-300 hover:scale-105 hover:shadow-lg`}
+					>
+						{cta.fields?.title}
+					</PrimaryButton>
+				</div>
 			)}
 		</div>
 	)
 
 	return (
-		<div className="container mx-auto">
+		<div className="container mx-auto px-4">
 			<div className="flex flex-wrap">
 				{/* Desktop layout */}
-				<div
-					className={`hidden md:flex w-full ${image ? 'h-[600px]' : 'h-auto'}`}
-				>
-					{image ? (
+				<div className="hidden md:flex w-full">
+					{img ? (
 						imagePosition === 'left' ? (
 							<>
 								<ImageSection />
@@ -130,9 +135,9 @@ export function InfoSection({
 				</div>
 
 				{/* Mobile layout */}
-				<div className="flex flex-col md:hidden w-full">
+				<div className="flex flex-col md:hidden w-full gap-6">
 					<ContentSection />
-					{image && <ImageSection />}
+					{img && <ImageSection />}
 				</div>
 			</div>
 		</div>

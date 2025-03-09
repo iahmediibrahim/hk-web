@@ -1,5 +1,7 @@
 'use client'
 import { ContentfulImage, CTA } from '@/lib/contentful/types'
+import { faPoundSign } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Image from 'next/image'
 import CountUp from 'react-countup'
 import { PrimaryButton } from '../PrimaryButton'
@@ -37,11 +39,12 @@ export function HeroBanner({
 					<div className="md:w-8/12 xs:w-full">
 						<div className="font-normal w-full">
 							{heading && (
-								<div
-									className={`my-12 md:text-5xl xs:text-4xl font-black md:w-9/12 xs:w-full`}
-									style={{ lineHeight: 1.2 }}
-									dangerouslySetInnerHTML={{ __html: heading }}
-								/>
+								<h1
+									className={`my-12 text-3xl md:text-5xl sm:text-4xl font-black md:w-9/12 xs:w-full`}
+								>
+									{' '}
+									{heading}{' '}
+								</h1>
 							)}
 
 							{paragraph && (
@@ -78,14 +81,17 @@ export function HeroBanner({
 					{counter && (
 						<div className="text-lg md:w-4/12 xs:w-full flex flex-wrap md:justify-center xs:justify-center md:mt-0 xs:mt-5 items-center">
 							<div className="text-center mt-8">
-								<p className="w-full">{counter?.fields?.title}</p>
-								<CountUp
-									start={0}
-									end={counter?.fields?.number}
-									duration={2.5}
-									separator=","
-									className="text-4xl font-bold"
-								/>
+								<p className="w-full mb-4">{counter?.fields?.title}</p>
+								<div className="text-6xl">
+									<FontAwesomeIcon icon={faPoundSign} />
+									<CountUp
+										start={0}
+										end={counter?.fields?.number}
+										duration={2.5}
+										separator=","
+										className="text-6xl font-bold"
+									/>
+								</div>
 							</div>
 						</div>
 					)}

@@ -12,7 +12,7 @@ export function MobileNavItem({
 	onClose: () => void
 }) {
 	const [isOpen, setIsOpen] = useState(false)
-	const isActive = pathname === `/${page.slugPath.join('/')}`
+	const isActive = pathname.includes(page.slug)
 
 	return (
 		<div className="space-y-1">
