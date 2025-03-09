@@ -1,19 +1,17 @@
 'use client'
 
+import { cardListProps } from '../InfoSection'
+
 interface InfoStepCardProps {
-	cardList: {
-		stepNumber: number
-		text?: string
-		paragraph: string
-	}[]
+	cardList: cardListProps[]
 	colorVar?: string
 }
 
 export function InfoStepCard({ cardList, colorVar }: InfoStepCardProps) {
 	return (
-		<ul className="list-none grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 md:gap-4 my-12">
+		<ul className="list-none grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 md:gap-4 py-8">
 			{cardList.map((item, index) => {
-				const { stepNumber, text, paragraph } = item
+				const { stepNumber, title, paragraph } = item?.fields
 				return (
 					<li
 						key={index}
@@ -32,7 +30,7 @@ export function InfoStepCard({ cardList, colorVar }: InfoStepCardProps) {
 									color: colorVar ? `var(--${colorVar})` : 'inherit',
 								}}
 							>
-								{text}
+								{title}
 							</h3>
 						</div>
 						<p className="text-white text-left font-bold">{paragraph}</p>

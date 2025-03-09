@@ -102,7 +102,7 @@ const options: Options = {
 
 const RichText: React.FC<RichTextProps> = ({ content }) => {
 	return (
-		<div className="rich-text">
+		<div className="rich-text whitespace-pre-wrap">
 			{documentToReactComponents(content, options)}
 		</div>
 	)

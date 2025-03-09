@@ -5,6 +5,13 @@ import { InfoStepCard } from '../InfoStepCard'
 import { ListComponent } from '../ListComponent'
 import { PrimaryButton } from '../PrimaryButton'
 import { RichText } from '../RichText/RichText'
+export interface cardListProps {
+	fields: {
+		stepNumber: number
+		title?: string
+		paragraph: string
+	}
+}
 
 export interface InfoSectionProps {
 	heading: string
@@ -15,30 +22,26 @@ export interface InfoSectionProps {
 	imagePosition?: 'left' | 'right'
 	textBg?: boolean
 	colorVar?: string
-	list?: {
-		text: string
-		linkTo?: string
-	}[]
-	cardList?: {
-		text: string
-		stepNumber: number
-		paragraph: string
-	}[]
+	listText?: string[]
+	cardList?: cardListProps[]
+	imageFit: boolean
+	listTextLink?: string
 }
 
 export function InfoSection({
 	heading,
 	paragraph,
 	paragraph2,
-	list,
+	listText,
 	cardList,
 	cta,
 	img,
 	imagePosition = 'left',
 	textBg = false,
+	imageFit,
 	colorVar,
+	listTextLink,
 }: InfoSectionProps) {
-	console.log('parag', paragraph)
 	const ImageSection = () => (
 		<div
 			className={`md:w-1/2 w-full overflow-hidden shadow-xl  ${
@@ -47,7 +50,9 @@ export function InfoSection({
 		>
 			{img && (
 				<Image
-					className="w-full h-full object-contain transition-transform duration-500 hover:scale-102"
+					className={`w-full h-full ${
+						imageFit ? 'object-contain ' : 'object-cover '
+					} transition-transform duration-500 hover:scale-102`}
 					src={'https:' + img.fields.file.url}
 					alt={img.fields.file.fileName}
 					width={1920}
@@ -79,14 +84,16 @@ export function InfoSection({
 			}}
 		>
 			<div
-				className={`text-lg ${!img && 'text-center'} space-y-5`}
+				className={`text-lg ${!img && 'text-center'} space-y-8`}
 				style={{ color: textBg ? 'white' : 'black' }}
 			>
 				<h2 className="text-2xl sm:text-3xl md:text-4xl font-black tracking-tight leading-tight">
 					{heading}
 				</h2>
 				{paragraph && <RichText content={paragraph} />}
-				{list && <ListComponent list={list} colorVar={colorVar} />}
+				{listText && (
+					<ListComponent list={listText} listTextLink={listTextLink} />
+				)}
 				{cardList && <InfoStepCard cardList={cardList} colorVar={colorVar} />}
 				{paragraph2 && (
 					<div
@@ -96,7 +103,7 @@ export function InfoSection({
 				)}
 			</div>
 			{cta && (
-				<div className="mt-16 flex md:block justify-center text-center">
+				<div className="mt-8 flex md:block justify-center text-center">
 					<PrimaryButton
 						href={cta?.fields?.linkTo}
 						large={cta?.fields?.large}

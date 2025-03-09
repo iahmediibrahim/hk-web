@@ -9,10 +9,11 @@ export default async function Page({
 }) {
 	const { slug } = await params
 	const contentType = slug.length === 1 ? 'page' : 'subPage'
-	const page = await getPageBySlug(slug[slug.length - 1], contentType)
+	const page = await getPageBySlug(slug, contentType)
 	if (!page) {
 		notFound()
 	}
+	console.log('page', page?.fields?.parentPage)
 
 	const colorVar = slug[0] === '' ? 'dark-grey' : slug[0]
 	const hasBanner = page?.fields?.sections?.find(

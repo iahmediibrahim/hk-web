@@ -5,19 +5,29 @@ const client = createClient({
 	space: process.env.CONTENTFUL_SPACE_ID || '',
 	accessToken: process.env.CONTENTFUL_ACCESS_TOKEN || '',
 })
-export const getPageBySlug = async (slug: string, contentType: string) => {
+export const getPageBySlug = async (slug: string[], contentType: string) => {
 	try {
 		const response = await client.getEntries({
 			content_type: contentType,
-			'fields.slug': slug,
-			select: ['fields.title', 'fields.slug', 'fields.sections'],
+			'fields.slug': slug[slug.length - 1],
+			select: [
+				'fields.title',
+				'fields.slug',
+				'fields.sections',
+				'fields.parentPage',
+			],
 			include: 3,
 		})
 
 		if (!response?.items) {
 			throw new Error('Failed to fetch Page')
 		}
-		return response.items[0] as unknown as ContentfulPage
+		const page = response.items[0] as unknown as ContentfulPage
+		const slugPath = buildSlugPath(page)
+		if (slugPath.length > 0 && slugPath.join('/') !== slug.join('/')) {
+			throw new Error('Failed to fetch Page')
+		}
+		return page
 	} catch (error) {
 		console.error('Error fetching posts:', error)
 	}

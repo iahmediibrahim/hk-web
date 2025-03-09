@@ -55,8 +55,8 @@ export function SectionResolver({
 }) {
 	// Get the content type ID from the entry
 	const contentType = section?.sys?.contentType?.sys?.id as keyof SectionTypeMap
-	console.log('section', section)
-	console.log('contentType', contentType)
+	// console.log('section', section)
+	// console.log('contentType', contentType)
 	const Component = componentMap[contentType] as (
 		props: SectionTypeMap[typeof contentType],
 	) => ReactNode

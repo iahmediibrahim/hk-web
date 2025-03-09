@@ -110,3 +110,33 @@ p {
 .rich-text a {
 	text-decoration: underline;
 }
+.rich-text ul li {
+	list-style: none;
+	position: relative;
+	padding-left: 1.5em;
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+	text-align: left;
+}
+
+.rich-text ul li::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0.75em;
+	transform: translateY(-50%);
+	width: 6px;
+	height: 6px;
+	background-color: currentColor;
+	border-radius: 50%;
+	opacity: 0.8;
+}
+
+.rich-text p {
+	text-align: left;
+}
+.rich-text h1 {
+	text-align: left;
+	font-weight: 900;
+	margin-bottom: 0.6rem;
+}

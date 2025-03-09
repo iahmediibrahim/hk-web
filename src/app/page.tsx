@@ -3,7 +3,7 @@ import { getPageBySlug } from '@/lib/contentful'
 import { notFound } from 'next/navigation'
 
 export default async function Home() {
-	const page = await getPageBySlug('home', 'page')
+	const page = await getPageBySlug(['home'], 'page')
 	if (!page) {
 		notFound()
 	}

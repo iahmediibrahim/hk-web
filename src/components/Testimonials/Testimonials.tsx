@@ -1,4 +1,6 @@
+'use client'
 import { CTA } from '@/lib/contentful'
+import { usePathname } from 'next/navigation'
 import { Carousel } from '../Carousel'
 import { PrimaryButton } from '../PrimaryButton'
 
@@ -23,6 +25,8 @@ export function Testimonials({
 	colorVar,
 	cta,
 }: TestimonialsProps) {
+	const pathname = usePathname()
+
 	return (
 		<div className="container mx-auto px-6 py-24">
 			<div className="text-left mb-16">
@@ -72,8 +76,7 @@ export function Testimonials({
 						</div>
 					))}
 			</Carousel>
-
-			{cta && (
+			{cta && !pathname.includes('testimonials') && (
 				<div className="mt-16 flex md:block justify-center text-center">
 					<PrimaryButton
 						href={cta?.fields?.linkTo}

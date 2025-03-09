@@ -4,13 +4,10 @@ import Link from 'next/link'
 
 export function ListComponent({
 	list,
-	colorVar,
+	listTextLink,
 }: {
-	list: {
-		text: string
-		linkTo?: string
-	}[]
-	colorVar?: string
+	list: string[]
+	listTextLink?: string
 }) {
 	return (
 		<ul className="list-none grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 md:gap-4 my-12">
@@ -20,20 +17,20 @@ export function ListComponent({
 						icon={faCheck}
 						className="w-4 h-4 md:w-5 md:h-5 mr-2"
 						style={{
-							color: `var(--${colorVar})`,
+							color: 'white',
 						}}
 					/>
 				)
 				const ListItem = (
 					<>
 						{checkIcon}
-						{item.text}
+						{item}
 					</>
 				)
 
-				return item.linkTo ? (
+				return listTextLink ? (
 					<Link
-						href={item.linkTo}
+						href={listTextLink}
 						key={`list-item-${index}`}
 						className="flex items-center text-sm md:text-base"
 					>
