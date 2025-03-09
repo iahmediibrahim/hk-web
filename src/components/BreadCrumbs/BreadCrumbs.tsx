@@ -29,7 +29,7 @@ export function Breadcrumb({
 				aria-label="Breadcrumb"
 				className="container mx-auto px-4 pt-8 sm:pt-12 md:pt-16"
 			>
-				<ol className="flex flex-wrap gap-2 text-xs sm:text-sm md:text-base">
+				<ol className="flex flex-wrap gap-2 text-sm sm:text-lg md:text-base">
 					{breadcrumbs.map((crumb, index) => (
 						<li key={crumb.href} className="flex items-center">
 							{index > 0 && <span className="mx-1 sm:mx-2">/</span>}

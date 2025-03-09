@@ -66,8 +66,7 @@ export function HeroBanner({
 					</div>
 					{img && (
 						<div
-							className={`md:w-4/12 xs:w-full flex md:justify-center xs:justify-center md:mt-0 xs:mt-5 items-start
-								}`}
+							className={`hidden md:block md:w-4/12 flex md:justify-center items-start`}
 						>
 							<Image
 								className={`w-50`}
