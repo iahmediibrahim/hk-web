@@ -10,6 +10,8 @@ export interface cardListProps {
 		stepNumber: number
 		title?: string
 		paragraph: string
+		type?: string
+		linkTo?: string
 	}
 }
 
@@ -26,6 +28,7 @@ export interface InfoSectionProps {
 	cardList?: cardListProps[]
 	imageFit: boolean
 	listTextLink?: string
+	tabs?: string[]
 }
 
 export function InfoSection({
@@ -41,6 +44,7 @@ export function InfoSection({
 	imageFit,
 	colorVar,
 	listTextLink,
+	tabs,
 }: InfoSectionProps) {
 	const ImageSection = () => (
 		<div
@@ -94,7 +98,14 @@ export function InfoSection({
 				{listText && (
 					<ListComponent list={listText} listTextLink={listTextLink} />
 				)}
-				{cardList && <InfoStepCard cardList={cardList} colorVar={colorVar} />}
+				{cardList && (
+					<InfoStepCard
+						cardList={cardList}
+						tabs={tabs}
+						textBg={textBg}
+						colorVar={colorVar}
+					/>
+				)}
 				{paragraph2 && (
 					<div
 						className="text-lg opacity-90 leading-relaxed"

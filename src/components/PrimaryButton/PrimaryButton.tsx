@@ -10,7 +10,7 @@ interface PrimaryButtonProps {
 	href?: string
 	type?: 'button' | 'submit' | 'reset'
 	disabled?: boolean
-	props?: unknown
+	style?: React.CSSProperties
 	large?: boolean
 	outlined?: boolean
 	bgWhite?: boolean
@@ -26,6 +26,7 @@ export const PrimaryButton = ({
 	large = true,
 	outlined = false,
 	bgWhite = false,
+	style,
 	...props
 }: PrimaryButtonProps) => {
 	const router = useRouter()
@@ -79,6 +80,7 @@ export const PrimaryButton = ({
                0 6px 12px rgba(0, 0, 0, 0.2)`
 					: `0 4px 6px rgba(0, 0, 0, 0.1)`,
 				transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+				...style,
 			}}
 			type={type}
 			{...props}
