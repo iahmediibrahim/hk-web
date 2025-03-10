@@ -18,7 +18,9 @@ export default async function Renderer({
 			<main>
 				<div>
 					<div className="mb-16 md:mb-[84px]"></div>
-					<SecondNav pages={pages} />
+					<div className="hidden md:block">
+						<SecondNav pages={pages} />
+					</div>
 				</div>
 				{children}
 			</main>

@@ -51,12 +51,12 @@ export function SecondNav({ pages }: { pages: SimplifiedPage[] }) {
 
 							{child.children?.length > 0 && (
 								<div className="absolute left-0 hidden group-hover:block pt-2 z-40">
-									<div className="bg-white rounded-md shadow-lg py-2 min-w-[200px]">
+									<div className="bg-white text-center rounded-md shadow-lg py-2 min-w-[240px]">
 										{child.children.map((subChild: SimplifiedPage) => (
 											<Link
 												key={subChild.id}
 												href={`/${joinSlugs(subChild.slugPath)}`}
-												className="block px-4 py-2 text-sm transition-all duration-200 ease-in text-gray-700 hover:bg-primary-hover hover:text-gray-900"
+												className="block px-6 py-4 text-sm uppercase transition-all duration-200 ease-in text-gray-700 hover:bg-primary-hover hover:text-gray-900"
 												style={
 													pathname === `/${subChild.slugPath.join('/')}`
 														? {
