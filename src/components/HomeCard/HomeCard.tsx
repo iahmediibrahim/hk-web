@@ -81,7 +81,7 @@ export function HomeCard({
 					</div>
 				)}
 
-				<p className="text-gray-600 leading-relaxed font-light">{paragraph}</p>
+				<p className="text-gray-600 leading-relaxed  ">{paragraph}</p>
 
 				<div className="flex flex-col sm:flex-row gap-4 justify-start items-end mt-auto flex-grow">
 					{primaryButton && (

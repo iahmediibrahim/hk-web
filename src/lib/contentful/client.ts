@@ -73,7 +73,9 @@ export async function getPageHierarchy(): Promise<SimplifiedPage[]> {
 	const { items: pages } = pagesResponse
 	const { items: subPages } = subPagesResponse
 	const allPages = [...pages, ...subPages] as unknown[] as ContentfulPage[]
-
+	if (allPages.length === 0) {
+		throw new Error('No pages found in the content management system')
+	}
 	const pageMap = new Map<string, SimplifiedPage>()
 	const rootPages: SimplifiedPage[] = []
 	// console.log('allPages', allPages)
