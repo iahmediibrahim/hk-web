@@ -14,7 +14,7 @@ export default function NotFound() {
 						Oops! Page Not Found
 					</h2>
 					<p className="text-gray-500 max-w-md mx-auto">
-						The page you're looking for seems to have vanished into the digital
+						The page you are looking for seems to have vanished into the digital
 						void.
 					</p>
 					<div className="mt-8 flex justify-center">
