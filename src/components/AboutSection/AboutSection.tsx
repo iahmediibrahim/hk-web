@@ -33,7 +33,9 @@ export function AboutSection({
 	return (
 		<div id="about" className="container mx-auto px-4  py-12">
 			<div className="flex flex-col md:flex-row justify-between items-center gap-8 text-black">
-				<div className="w-full md:w-[45%] space-y-6">
+				<div
+					className={`w-full ${img ? 'md:w-[45%]' : 'md:w-[70%]'} space-y-6`}
+				>
 					<div className="w-full my-6 md:my-10">
 						<p
 							style={{ color: `var(--${colorVar})` }}

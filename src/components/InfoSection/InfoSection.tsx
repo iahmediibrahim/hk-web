@@ -91,7 +91,11 @@ export function InfoSection({
 				className={`text-lg ${!img && 'text-center'} space-y-8`}
 				style={{ color: textBg ? 'white' : 'black' }}
 			>
-				<h2 className="text-2xl sm:text-3xl md:text-4xl font-black tracking-tight leading-tight">
+				<h2
+					className={`text-2xl sm:text-3xl md:text-4xl font-black tracking-tight leading-tight ${
+						!img && 'max-w-4xl mx-auto'
+					}`}
+				>
 					{heading}
 				</h2>
 				{paragraph && <RichText content={paragraph} />}

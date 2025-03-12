@@ -53,11 +53,13 @@ export function Testimonials({
 									: 'md:flex-[0_0_50%]'
 							} px-4 pb-20 pt-4`}
 						>
-							<div className="bg-white/80 p-4 md:p-8 rounded-2xl shadow-lg transform transition-all duration-500 hover:shadow-2xl hover:scale-105 backdrop-blur-lg h-full flex flex-col">
-								<blockquote className="text-gray-700 text-lg md:text-xl mb-8">
-									{testimonial?.fields?.paragraph}
-								</blockquote>
-								<div className="flex items-center gap-5 mt-auto">
+							<div className="bg-white/80 p-4 md:p-8 rounded-2xl shadow-lg transform transition-all duration-500 hover:shadow-2xl hover:scale-105 backdrop-blur-lg h-full grid grid-rows-[1fr_auto]">
+								<div className="flex flex-col justify-center">
+									<blockquote className="text-gray-700 text-lg md:text-xl mb-8 text-center">
+										{testimonial?.fields?.paragraph}
+									</blockquote>
+								</div>
+								<div className="flex items-center gap-5 justify-end">
 									{/* <div className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-gradient-to-br from-primary to-primary-hover flex items-center justify-center shadow-lg">
 									<span className="text-lg md:text-xl font-medium text-black">
 										{testimonial?.fields.name.charAt(0)}
