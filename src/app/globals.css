@@ -81,7 +81,7 @@ blockquote {
 blockquote p {
 	padding: 1rem;
 }
-blockquote::before {
+/* blockquote::before {
 	content: '"';
 	font-size: 4rem;
 	position: absolute;
@@ -101,7 +101,7 @@ blockquote::after {
 	color: var(--dark-grey);
 	opacity: 0.2;
 	font-family: Georgia, serif;
-}
+} */
 
 p {
 	font-size: 1.125rem /* 18px */;

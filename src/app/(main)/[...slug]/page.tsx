@@ -13,7 +13,6 @@ export default async function Page({
 	if (!page) {
 		notFound()
 	}
-	console.log('page', page?.fields?.parentPage)
 
 	const colorVar = slug[0] === '' ? 'dark-grey' : slug[0]
 	const hasBanner = page?.fields?.sections?.find(

@@ -1,7 +1,7 @@
 import { createClient } from 'contentful'
 import { ContentfulPage, SimplifiedPage } from './types'
 
-const client = createClient({
+export const client = createClient({
 	space: process.env.CONTENTFUL_SPACE_ID || '',
 	accessToken: process.env.CONTENTFUL_ACCESS_TOKEN || '',
 })
@@ -110,4 +110,15 @@ export async function getPageHierarchy(): Promise<SimplifiedPage[]> {
 		(page) => page.slug === 'home',
 	)
 	return homePage ? homePage.children : rootPages
+}
+
+// get article by id
+export async function getArticlesById(id: string) {
+	const response = await client.getEntries({
+		content_type: 'article',
+		'fields.id': id,
+		select: ['fields.title', 'fields.slug', 'fields.id'],
+	})
+
+	console.log(response)
 }

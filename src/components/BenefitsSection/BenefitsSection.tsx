@@ -1,10 +1,6 @@
 export interface BenefitsProps {
 	heading?: string
-	listOfBenefits: {
-		fields: {
-			text: string
-		}
-	}[]
+	listOfBenefits: string[]
 	colorVar: string
 }
 
@@ -29,7 +25,7 @@ export function BenefitsSection({
 				{listOfBenefits.map((item, index) => (
 					<div key={index} className="h-full">
 						<div className="relative h-full p-6 sm:p-8 bg-gray-100/70 hover:bg-gray-200/70 transition-colors duration-300 flex items-center rounded-lg">
-							<div className="pl-12 sm:pl-14">{item?.fields.text}</div>
+							<div className="pl-12 sm:pl-14">{item}</div>
 							<div className="absolute -top-[30px] -left-[30px]">
 								<svg
 									viewBox="0 0 24 24"

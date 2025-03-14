@@ -1,6 +1,7 @@
 import { Entry } from 'contentful'
 import { ReactNode } from 'react'
 import { AboutSection, AboutSectionProps } from '../AboutSection'
+import { ArticlesSection, ArticlesSectionProps } from '../ArticlesSection'
 import { BenefitsProps, BenefitsSection } from '../BenefitsSection'
 import {
 	DynamicCardSection,
@@ -27,6 +28,7 @@ type SectionTypeMap = {
 	infoSection: InfoSectionProps
 	howItWorksSection: HowItWorksSectionProps
 	faqs: FaqsProps
+	articlesSection: ArticlesSectionProps
 }
 
 // Component map with TypeScript enforcement
@@ -44,6 +46,7 @@ const componentMap: {
 	infoSection: InfoSection,
 	howItWorksSection: HowItWorksSection,
 	faqs: Faqs,
+	articlesSection: ArticlesSection,
 }
 
 export function SectionResolver({

@@ -1,3 +1,4 @@
+import { Document } from '@contentful/rich-text-types'
 import { EntryFields, EntrySkeletonType } from 'contentful'
 
 export type ContentfulPage = {
@@ -50,4 +51,16 @@ export interface SimplifiedPage {
 	parentId?: EntryFields.Text
 	children: SimplifiedPage[]
 	slugPath: EntryFields.Text[]
+}
+
+export interface Article {
+	fields: {
+		id: EntryFields.Text
+		title: EntryFields.Text
+		slug: EntryFields.Text
+		excerpt: EntryFields.Text
+		img: ContentfulImage
+		date: EntryFields.Text
+		content: Document
+	}
 }

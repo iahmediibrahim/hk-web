@@ -1,5 +1,6 @@
 import { ContentfulImage, CTA } from '@/lib/contentful'
 import Image from 'next/image'
+import Link from 'next/link'
 import { AbardoLogo } from '../AbardoLogo'
 import { Logo } from '../Logo'
 import { PatrecLogo } from '../PatrecLogo'
@@ -8,11 +9,14 @@ import { PrimaryButton } from '../PrimaryButton'
 export interface CardFields {
 	img: ContentfulImage
 	title: string
-	subTitle: string
+	subTitle?: string
 	paragraph: string
 	primaryButton?: CTA
 	secondaryButton?: CTA
 	id: string
+	link?: string
+	date?: string
+	isArticle?: boolean
 }
 
 export interface CardProps {
@@ -27,12 +31,12 @@ export function HomeCard({
 	primaryButton,
 	secondaryButton,
 	id,
+	link,
+	date,
+	isArticle = false,
 }: CardFields) {
-	return (
-		<div
-			className="group flex flex-col h-full bg-white rounded-2xl shadow-lg hover:shadow-2xl overflow-hidden 
-      transition-all duration-300 ease-out hover:-translate-y-2 backdrop-blur-sm border border-gray-100"
-		>
+	const CardContent = () => (
+		<>
 			<div className="relative h-72 sm:h-[400px] w-full overflow-hidden">
 				<Image
 					src={'https:' + img.fields.file.url}
@@ -81,8 +85,13 @@ export function HomeCard({
 					</div>
 				)}
 
-				<p className="text-gray-600 leading-relaxed  ">{paragraph}</p>
-
+				<p
+					className={`text-gray-600 leading-relaxed ${
+						isArticle ? 'line-clamp-3' : ''
+					}`}
+				>
+					{paragraph}
+				</p>
 				<div className="flex flex-col sm:flex-row gap-4 justify-start items-end mt-auto flex-grow">
 					{primaryButton && (
 						<PrimaryButton
@@ -105,7 +114,30 @@ export function HomeCard({
 						</PrimaryButton>
 					)}
 				</div>
+				{date && (
+					<div className="text-sm text-gray-500 font-medium">
+						Article •{' '}
+						{new Date(date).toLocaleDateString('en-US', {
+							month: 'long',
+							day: 'numeric',
+							year: 'numeric',
+						})}
+					</div>
+				)}
 			</div>
+		</>
+	)
+
+	const baseClassName =
+		'group flex flex-col h-full bg-white rounded-2xl shadow-lg hover:shadow-2xl overflow-hidden transition-all duration-300 ease-out hover:-translate-y-2 backdrop-blur-sm border border-gray-100'
+
+	return link ? (
+		<Link href={link} className={baseClassName}>
+			<CardContent />
+		</Link>
+	) : (
+		<div className={baseClassName}>
+			<CardContent />
 		</div>
 	)
 }
