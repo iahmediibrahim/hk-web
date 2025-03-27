@@ -35,7 +35,6 @@ export function ArticlesSection({
 				<div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1 my-10">
 					{articles.map((article, index) => {
 						const { fields } = article
-						console.log(fields)
 						return (
 							<div
 								className="flex-[0_0_100%] min-w-0 md:flex-[0_0_50%] lg:flex-[0_0_33.33%]  px-4 pb-20 pt-4"

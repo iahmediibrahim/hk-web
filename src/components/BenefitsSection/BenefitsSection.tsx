@@ -3,6 +3,7 @@ export interface BenefitsProps {
 	listOfBenefits: string[]
 	colorVar: string
 }
+//  NOT USED ANYMORE FOR NOW
 
 export function BenefitsSection({
 	heading = 'Benefits',

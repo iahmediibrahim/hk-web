@@ -18,7 +18,7 @@ export default function NotFound() {
 						void.
 					</p>
 					<div className="mt-8 flex justify-center">
-						<PrimaryButton href="/">
+						<PrimaryButton href="/" bgWhite>
 							<FontAwesomeIcon className="w-6 pr-2" icon={faHome} />
 							Return Home
 						</PrimaryButton>

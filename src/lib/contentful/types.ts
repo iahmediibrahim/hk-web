@@ -64,3 +64,36 @@ export interface Article {
 		content: Document
 	}
 }
+
+export interface Job {
+	fields: {
+		title: string
+		slug: string
+		id: string
+		description: Document
+		rewards: Array<{
+			description: string
+		}>
+		requirements: Array<{
+			description: string
+		}>
+		location: {
+			id: string
+			lat: number
+			lng: number
+			formattedAddress: string
+		}
+		salary: {
+			code: string
+			type: string
+			unit: number
+			unitFrom: number
+		}
+		category: {
+			id: string
+			name: string
+			code: string
+		}
+		permanent: boolean
+	}
+}

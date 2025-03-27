@@ -1,5 +1,5 @@
 import { CardWithIcon } from '../CardWithIcon'
-
+//  NOT USED ANYMORE FOR NOW
 export interface WhyUsSectionProps {
 	title: string
 	paragraph: string

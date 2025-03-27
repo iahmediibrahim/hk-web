@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Suspense } from 'react'
+import { Toaster } from 'react-hot-toast'
 
 import { Footer, Loader } from '@/components'
 import '@/lib/fontawesome'
@@ -23,6 +24,7 @@ export default async function RootLayout({
 					<Renderer>{children}</Renderer>
 				</Suspense>
 				<Footer />
+				<Toaster position="top-right" />
 			</body>
 		</html>
 	)

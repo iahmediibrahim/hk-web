@@ -2,7 +2,6 @@ import { Entry } from 'contentful'
 import { ReactNode } from 'react'
 import { AboutSection, AboutSectionProps } from '../AboutSection'
 import { ArticlesSection, ArticlesSectionProps } from '../ArticlesSection'
-import { BenefitsProps, BenefitsSection } from '../BenefitsSection'
 import {
 	DynamicCardSection,
 	DynamicCardSectionProps,
@@ -12,19 +11,17 @@ import { HeroBanner, HeroBannerProps } from '../HeroBanner'
 import { HeroSection, HeroSectionProps } from '../HeroSection'
 import { HowItWorksSection, HowItWorksSectionProps } from '../HowItWorksSection'
 import { InfoSection, InfoSectionProps } from '../InfoSection'
-import { OurClientsSection, OurClientsSectionProps } from '../OurClientsSection'
 import { Testimonials, TestimonialsProps } from '../Testimonials'
-import { WhyUsSection, WhyUsSectionProps } from '../WhyUsSection'
 
 type SectionTypeMap = {
 	heroBanner: HeroBannerProps
 	aboutSection: AboutSectionProps
 	testimonials: TestimonialsProps
-	benefitsSection: BenefitsProps
+	// benefitsSection: BenefitsProps
 	heroSection: HeroSectionProps
 	dynamicCardSection: DynamicCardSectionProps
-	whyUsSection: WhyUsSectionProps
-	ourClientsSection: OurClientsSectionProps
+	// whyUsSection: WhyUsSectionProps
+	// ourClientsSection: OurClientsSectionProps
 	infoSection: InfoSectionProps
 	howItWorksSection: HowItWorksSectionProps
 	faqs: FaqsProps
@@ -38,11 +35,11 @@ const componentMap: {
 	heroBanner: HeroBanner,
 	aboutSection: AboutSection,
 	testimonials: Testimonials,
-	benefitsSection: BenefitsSection,
+	// benefitsSection: BenefitsSection,
 	heroSection: HeroSection,
 	dynamicCardSection: DynamicCardSection,
-	whyUsSection: WhyUsSection,
-	ourClientsSection: OurClientsSection,
+	// whyUsSection: WhyUsSection,
+	// ourClientsSection: OurClientsSection,
 	infoSection: InfoSection,
 	howItWorksSection: HowItWorksSection,
 	faqs: Faqs,

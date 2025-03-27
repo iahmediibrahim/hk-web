@@ -1,5 +1,6 @@
 import { ContentfulImage } from '@/lib/contentful'
 import Image from 'next/image'
+//  NOT USED ANYMORE FOR NOW
 
 export interface OurClientsSectionProps {
 	title: string

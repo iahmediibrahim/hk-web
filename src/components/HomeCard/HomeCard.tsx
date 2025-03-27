@@ -6,7 +6,7 @@ import { Logo } from '../Logo'
 import { PatrecLogo } from '../PatrecLogo'
 import { PrimaryButton } from '../PrimaryButton'
 
-export interface CardFields {
+export interface HomeCardFields {
 	img: ContentfulImage
 	title: string
 	subTitle?: string
@@ -17,10 +17,6 @@ export interface CardFields {
 	link?: string
 	date?: string
 	isArticle?: boolean
-}
-
-export interface CardProps {
-	fields: CardFields
 }
 
 export function HomeCard({
@@ -34,7 +30,7 @@ export function HomeCard({
 	link,
 	date,
 	isArticle = false,
-}: CardFields) {
+}: HomeCardFields) {
 	const CardContent = () => (
 		<>
 			<div className="relative h-72 sm:h-[400px] w-full overflow-hidden">

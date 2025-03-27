@@ -10,7 +10,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-interface CardProps {
+export interface CardProps {
 	iconId: string
 	heading: string
 	paragraph?: string
