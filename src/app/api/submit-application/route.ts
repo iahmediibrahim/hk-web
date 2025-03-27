@@ -20,7 +20,7 @@ export async function POST(request: Request) {
 		const base64CV = buffer.toString('base64')
 
 		const msg = {
-			to: 'ahmed.ramadan@saqaya.com', // Replace with your email
+			to: 'm@saqaya.com', // Replace with your email
 			from: 'info@holdenknight.com', // Replace with your SendGrid verified sender
 			subject: `TESTING Job Application: ${jobTitle}`,
 			// text: `TESTING New application received from ${firstName} ${lastName}`,
