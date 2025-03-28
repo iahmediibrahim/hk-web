@@ -97,3 +97,10 @@ export interface Job {
 		permanent: boolean
 	}
 }
+
+export interface Location {
+	id?: string
+	formattedAddress: string
+	lng: number
+	lat: number
+}

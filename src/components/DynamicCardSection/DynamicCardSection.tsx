@@ -1,9 +1,10 @@
-import { ContentfulImage } from '@/lib/contentful'
+import { ContentfulImage, Location } from '@/lib/contentful'
 import { faCheck } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Image from 'next/image'
 import { CardProps, CardWithIcon } from '../CardWithIcon'
 import { Carousel } from '../Carousel'
+import { FormId, FormSection } from '../FormSection'
 import { HomeCard, HomeCardFields } from '../HomeCard'
 import { JobItem, JobList } from '../JobList'
 
@@ -19,6 +20,8 @@ export interface DynamicCardSectionProps {
 	list?: string[]
 	colorVar: string
 	type: string
+	formId: FormId
+	locations?: Location[]
 }
 
 export function DynamicCardSection({
@@ -29,6 +32,8 @@ export function DynamicCardSection({
 	items,
 	list,
 	images,
+	formId,
+	locations,
 }: DynamicCardSectionProps) {
 	const shouldUseCarousel = items && items.length > 3
 	return (
@@ -131,6 +136,8 @@ export function DynamicCardSection({
 				</div>
 			) : type === 'jobs' ? (
 				<JobList items={items as JobItem[]} />
+			) : type === 'contact-form' ? (
+				<FormSection formId={formId} locations={locations} />
 			) : null}
 		</div>
 	)

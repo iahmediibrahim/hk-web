@@ -47,20 +47,20 @@ export default async function Post({
 	console.log(permanent)
 	return (
 		<article className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
-			<div className="max-w-6xl mx-auto px-6 py-16">
-				<header className="mb-16 bg-white rounded-2xl p-8 shadow-sm">
-					<div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
+			<div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-16">
+				<header className="mb-8 sm:mb-16 bg-white rounded-2xl p-4 sm:p-6 shadow-sm">
+					<div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 sm:mb-8">
 						<h1
-							className="text-5xl font-bold mb-4 md:mb-0"
+							className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-0"
 							style={{
 								color: `var(--${id})`,
 							}}
 						>
 							{title}
 						</h1>
-						<div className="flex items-center flex-wrap gap-3">
+						<div className="flex items-center flex-wrap gap-2 sm:gap-3">
 							<span
-								className="px-6 py-2 text-sm font-medium rounded-full text-white shadow-sm"
+								className="px-4 sm:px-6 py-1.5 sm:py-2 text-xs sm:text-sm font-medium rounded-full text-white shadow-sm"
 								style={{
 									background: `var(--${id})`,
 								}}
@@ -68,7 +68,7 @@ export default async function Post({
 								{category.name}
 							</span>
 							<span
-								className={`px-6 py-2 text-sm font-medium rounded-full text-white shadow-sm ${
+								className={`px-4 sm:px-6 py-1.5 sm:py-2 text-xs sm:text-sm font-medium rounded-full text-white shadow-sm ${
 									permanent ? 'bg-emerald-600' : 'bg-amber-500'
 								}`}
 							>
@@ -77,10 +77,10 @@ export default async function Post({
 						</div>
 					</div>
 
-					<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-						<div className="flex items-center gap-3 bg-slate-50 p-4 rounded-xl">
+					<div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+						<div className="flex items-center gap-2 sm:gap-3 bg-slate-50 p-3 sm:p-4 rounded-xl">
 							<svg
-								className="w-6 h-6"
+								className="w-5 h-5 sm:w-6 sm:h-6"
 								style={{
 									color: `var(--${id})`,
 								}}
@@ -101,13 +101,13 @@ export default async function Post({
 									d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
 								/>
 							</svg>
-							<span className="text-slate-700">
+							<span className="text-sm sm:text-base text-slate-700">
 								{location.formattedAddress}
 							</span>
 						</div>
-						<div className="flex items-center gap-3 bg-slate-50 p-4 rounded-xl">
+						<div className="flex items-center gap-2 sm:gap-3 bg-slate-50 p-3 sm:p-4 rounded-xl">
 							<svg
-								className="w-6 h-6"
+								className="w-5 h-5 sm:w-6 sm:h-6"
 								style={{
 									color: `var(--${id})`,
 								}}
@@ -122,7 +122,7 @@ export default async function Post({
 									d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
 								/>
 							</svg>
-							<span className="text-slate-700">
+							<span className="text-sm sm:text-base text-slate-700">
 								{salary.code}
 								{salary.unitFrom}-{salary.unit} {salary.type}
 							</span>
@@ -130,9 +130,9 @@ export default async function Post({
 					</div>
 				</header>
 
-				<div className="bg-white rounded-2xl p-8 shadow-sm mb-12">
+				<div className="bg-white rounded-2xl p-4 sm:p-6 shadow-sm mb-8 sm:mb-12">
 					<h2
-						className="text-3xl font-bold mb-6"
+						className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6"
 						style={{
 							color: `var(--${id})`,
 						}}
@@ -142,25 +142,25 @@ export default async function Post({
 					<RichText content={description} />
 				</div>
 
-				<div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+				<div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 mb-8 sm:mb-12">
 					{requirements && (
-						<div className="bg-white rounded-2xl p-8 shadow-sm">
+						<div className="bg-white rounded-2xl p-4 sm:p-6 shadow-sm">
 							<h2
-								className="text-3xl font-bold mb-6"
+								className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6"
 								style={{
 									color: `var(--${id})`,
 								}}
 							>
 								Requirements
 							</h2>
-							<ul className="space-y-4">
+							<ul className="space-y-3 sm:space-y-4">
 								{requirements?.map((req, index) => (
 									<li
 										key={index}
-										className="flex items-start gap-3 bg-slate-50 p-4 rounded-xl"
+										className="flex items-start gap-2 sm:gap-3 bg-slate-50 p-3 sm:p-4 rounded-xl"
 									>
 										<svg
-											className="w-6 h-6 mt-1 flex-shrink-0"
+											className="w-5 h-5 sm:w-6 sm:h-6 mt-1 flex-shrink-0"
 											style={{
 												color: `var(--${id})`,
 											}}
@@ -175,30 +175,32 @@ export default async function Post({
 												d="M5 13l4 4L19 7"
 											/>
 										</svg>
-										<span className="text-slate-700">{req.description}</span>
+										<span className="text-sm sm:text-base text-slate-700">
+											{req.description}
+										</span>
 									</li>
 								))}
 							</ul>
 						</div>
 					)}
 					{rewards && (
-						<div className="bg-white rounded-2xl p-8 shadow-sm">
+						<div className="bg-white rounded-2xl p-4 sm:p-6 shadow-sm">
 							<h2
-								className="text-3xl font-bold mb-6"
+								className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6"
 								style={{
 									color: `var(--${id})`,
 								}}
 							>
 								Benefits
 							</h2>
-							<ul className="space-y-4">
+							<ul className="space-y-3 sm:space-y-4">
 								{rewards?.map((reward, index) => (
 									<li
 										key={index}
-										className="flex items-start gap-3 bg-slate-50 p-4 rounded-xl"
+										className="flex items-start gap-2 sm:gap-3 bg-slate-50 p-3 sm:p-4 rounded-xl"
 									>
 										<svg
-											className="w-6 h-6 mt-1 flex-shrink-0"
+											className="w-5 h-5 sm:w-6 sm:h-6 mt-1 flex-shrink-0"
 											style={{
 												color: `var(--${id})`,
 											}}
@@ -213,7 +215,9 @@ export default async function Post({
 												d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
 											/>
 										</svg>
-										<span className="text-slate-700">{reward.description}</span>
+										<span className="text-sm sm:text-base text-slate-700">
+											{reward.description}
+										</span>
 									</li>
 								))}
 							</ul>
@@ -221,13 +225,11 @@ export default async function Post({
 					)}
 				</div>
 
-				<div className="bg-white rounded-2xl p-8 shadow-sm mb-12">
-					<GoogleMapComp location={location} />
-				</div>
+				<GoogleMapComp location={location} />
 
-				<div className="bg-white rounded-2xl p-8 shadow-sm">
+				<div className="bg-white rounded-2xl p-4 sm:p-6 shadow-sm">
 					<h2
-						className="text-3xl font-bold mb-6"
+						className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6"
 						style={{ color: `var(--${id})` }}
 					>
 						Apply Now

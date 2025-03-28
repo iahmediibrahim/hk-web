@@ -32,7 +32,8 @@ export const PrimaryButton = ({
 	const router = useRouter()
 	const pathname = usePathname()
 	let mainPage = pathname.split('/')[1]
-	mainPage = mainPage === '' ? 'dark-grey' : mainPage
+	mainPage = mainPage === '' || mainPage === 'contact' ? 'dark-grey' : mainPage
+
 	const [isHovered, setIsHovered] = useState(false)
 
 	const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {

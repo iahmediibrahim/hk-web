@@ -1,4 +1,7 @@
 'use client'
+import { Location } from '@/lib/contentful'
+import { faLocationDot } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { GoogleMap, Marker, useLoadScript } from '@react-google-maps/api'
 
 const containerStyle = {
@@ -6,11 +9,7 @@ const containerStyle = {
 	height: '400px',
 }
 
-export function GoogleMapComp({
-	location,
-}: {
-	location: { lat: number; lng: number }
-}) {
+export function GoogleMapComp({ location }: { location: Location }) {
 	const { isLoaded } = useLoadScript({
 		googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API || '',
 	})
@@ -18,8 +17,7 @@ export function GoogleMapComp({
 	if (!isLoaded) return <div>Loading...</div>
 
 	return (
-		<div className="mb-12">
-			<h2 className="text-2xl font-bold mb-4">Location</h2>
+		<div className="bg-white rounded-2xl shadow-sm mb-8 sm:mb-12">
 			<div className="h-[400px] rounded-lg overflow-hidden">
 				<GoogleMap
 					mapContainerStyle={containerStyle}
@@ -37,6 +35,10 @@ export function GoogleMapComp({
 					/>
 				</GoogleMap>
 			</div>
+			<p className="location-address text-gray-600 p-4">
+				<FontAwesomeIcon icon={faLocationDot} className="mr-2" />
+				{location.formattedAddress}
+			</p>
 		</div>
 	)
 }

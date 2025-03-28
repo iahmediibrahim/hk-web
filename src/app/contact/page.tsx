@@ -8,7 +8,8 @@ export default async function Contact() {
 		notFound()
 	}
 	return (
-		<div className=" ">
+		<div className="container mx-auto px-4 py-12 max-w-7xl">
+			{/* Sections */}
 			{page?.fields.sections?.map((section) => (
 				<SectionResolver
 					key={section.sys.id}
