@@ -22,10 +22,7 @@ export async function POST(request: Request) {
 		const msg = {
 			to: 'm@saqaya.com', // Replace with your email
 			from: 'info@holdenknight.com', // Replace with your SendGrid verified sender
-			subject: `TESTING Job Application: ${jobTitle}`,
-			// text: `TESTING New application received from ${firstName} ${lastName}`,
 			dynamic_template_data: {
-				// Add this section
 				firstName: firstName,
 				lastName: lastName,
 				email: email,

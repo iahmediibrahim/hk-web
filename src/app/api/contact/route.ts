@@ -15,7 +15,6 @@ export async function POST(request: Request) {
 		const msg = {
 			to: 'ahmed.ramadan@saqaya.com', // Replace with your company email
 			from: 'info@holdenknight.com', // Your verified SendGrid sender
-			subject: `New Contact Form Submission: ${contactType}`,
 			templateId: 'd-1b40367ac9df48cfb4f07cd63d4e08cd', // Replace with your contact form template ID
 			dynamic_template_data: {
 				firstName,

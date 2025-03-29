@@ -1,6 +1,8 @@
 import { Location } from '@/lib/contentful'
 import { ContactForm } from '../ContactForm'
 import { GoogleMapComp } from '../GoogleMapComp'
+import { RegisterVacancy } from '../RegisterVacancy'
+import { RequestCallBack } from '../RequestCallBack'
 
 // Define a mapping of form IDs to their corresponding components
 const FORM_COMPONENTS = {
@@ -9,6 +11,14 @@ const FORM_COMPONENTS = {
 	education: ContactForm,
 	'international-medical': ContactForm,
 	academy: ContactForm,
+	'healthcare-testimonials': ContactForm,
+	'education-testimonials': ContactForm,
+	'international-medical-testimonials': ContactForm,
+	'academy-testimonials': ContactForm,
+	'healthcare-vacancy': RegisterVacancy,
+	'education-vacancy': RegisterVacancy,
+	'education-callback': RequestCallBack,
+	'healthcare-callback': RequestCallBack,
 } as const
 
 export type FormId = keyof typeof FORM_COMPONENTS
