@@ -212,7 +212,7 @@ export const RequestCallBack = ({ formId }: { formId: string }) => {
 					{/* Candidate Type Selection */}
 					<div className="w-full">
 						<div className="w-full my-5 font-[600]">
-							3. What type of candidates are you looking for?*
+							What type of candidates are you looking for?*
 							<p className="ms-5">(please tick all that apply)</p>
 						</div>
 						<div className="space-y-4">
@@ -312,7 +312,7 @@ export const RequestCallBack = ({ formId }: { formId: string }) => {
 							htmlFor="details"
 							className="block text-sm font-medium text-gray-700 mb-1"
 						>
-							2. Please provide any details, which may help us support you
+							Please provide any details, which may help us support you
 						</label>
 						<textarea
 							id="details"

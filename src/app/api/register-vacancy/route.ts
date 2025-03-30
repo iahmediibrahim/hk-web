@@ -34,7 +34,7 @@ export async function POST(request: Request) {
 
 		// Prepare email content
 		const msg: sgMail.MailDataRequired = {
-			to: 'ahmed.ramadan@saqaya.com',
+			to: 'm@saqaya.com',
 			from: 'info@holdenknight.com',
 			templateId: 'd-5c6fff3c944e476aaa9249dbc279e12d',
 			dynamicTemplateData: {

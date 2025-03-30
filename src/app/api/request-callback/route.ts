@@ -44,7 +44,7 @@ export async function POST(request: Request) {
 
 		// Prepare email content
 		const msg = {
-			to: 'ahmed.ramadan@saqaya.com',
+			to: 'm@saqaya.com',
 			from: 'info@holdenknight.com',
 			templateId: 'd-c5c61dfda4aa4e3992f38c69c5f00be3',
 			dynamic_template_data: {
