@@ -1,9 +1,11 @@
 import { ContentfulImage, Location } from '@/lib/contentful'
+import { Course } from '@/types/course'
 import { faCheck } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Image from 'next/image'
 import { CardProps, CardWithIcon } from '../CardWithIcon'
 import { Carousel } from '../Carousel'
+import { CoursesList } from '../CoursesList'
 import { FormId, FormSection } from '../FormSection'
 import { HomeCard, HomeCardFields } from '../HomeCard'
 import { JobItem, JobList } from '../JobList'
@@ -15,7 +17,7 @@ type ContentfulEntry<T> = {
 export interface DynamicCardSectionProps {
 	title: string
 	paragraph?: string
-	items?: Array<ContentfulEntry<HomeCardFields | CardProps> | JobItem>
+	items?: Array<ContentfulEntry<HomeCardFields | CardProps> | JobItem | Course>
 	images?: ContentfulImage[]
 	list?: string[]
 	colorVar: string
@@ -36,6 +38,7 @@ export function DynamicCardSection({
 	locations,
 }: DynamicCardSectionProps) {
 	const shouldUseCarousel = items && items.length > 3
+	console.log(items)
 	return (
 		<div id="about" className="container mx-auto px-4 py-12">
 			<div className="flex flex-col items-center justify-center text-center text-black mb-8">
@@ -138,6 +141,8 @@ export function DynamicCardSection({
 				<JobList items={items as JobItem[]} />
 			) : type === 'contact-form' ? (
 				<FormSection formId={formId} locations={locations} />
+			) : type === 'courses' ? (
+				<CoursesList items={items as Course[]} />
 			) : null}
 		</div>
 	)
