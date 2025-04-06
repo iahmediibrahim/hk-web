@@ -1,1 +1,1 @@
-export * from './NotFoundJob'
+export * from './NotFound'

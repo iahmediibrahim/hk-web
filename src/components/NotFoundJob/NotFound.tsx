@@ -1,7 +1,7 @@
 'use client'
 import { PrimaryButton } from '../PrimaryButton'
 
-export function NotFoundJob({ id }: { id: string }) {
+export function NotFound({ id, title }: { id: string; title: string }) {
 	return (
 		<div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100">
 			<div className="max-w-lg w-full mx-4">
@@ -32,12 +32,12 @@ export function NotFoundJob({ id }: { id: string }) {
 							404
 						</h1>
 						<h2 className="text-3xl font-semibold text-slate-800 mb-2">
-							Job Not Found
+							{title} Not Found
 						</h2>
 					</div>
 					<p className="text-slate-600 text-lg leading-relaxed">
-						We couldn&apos;t find the job posting you&apos;re looking for. It
-						may have been removed or doesn&apos;t exist.
+						We couldn&apos;t find the {title} posting you&apos;re looking for.
+						It may have been removed or doesn&apos;t exist.
 					</p>
 					<div className="flex justify-center pt-4">
 						<PrimaryButton
@@ -46,7 +46,7 @@ export function NotFoundJob({ id }: { id: string }) {
 								window?.history?.back()
 							}}
 						>
-							← Return to Jobs
+							← Return to {title}s
 						</PrimaryButton>
 					</div>
 				</div>

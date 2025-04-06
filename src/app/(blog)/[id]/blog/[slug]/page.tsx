@@ -1,7 +1,7 @@
+import { NotFound } from '@/components'
 import { RichText } from '@/components/RichText'
 import { Article, client } from '@/lib/contentful'
 import Image from 'next/image'
-import Link from 'next/link'
 
 async function getPost({ slug }: { slug: string }) {
 	try {
@@ -25,29 +25,12 @@ export default async function Post({
 }: {
 	params: Promise<{ id: string; slug: string }>
 }) {
-	const slug = (await params).slug
+	const { id, slug } = await params
+
 	const post = await getPost({ slug })
 
 	if (!post) {
-		return (
-			<div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100">
-				<div className="text-center space-y-4">
-					<h1 className="text-4xl font-bold text-gray-800 pb-4">
-						Post not found
-					</h1>
-					<p className="text-gray-600 pb-8">
-						The post you are looking for does not exist.
-					</p>
-
-					<Link
-						href="/blog"
-						className="inline-flex items-center px-6 py-3 border border-transparent text-base text-white bg-[#0B86DF] hover:bg-[#096ab2] font-medium rounded-md transition-colors duration-200"
-					>
-						← Back to Blog
-					</Link>
-				</div>
-			</div>
-		)
+		return <NotFound id={id} title="Blog" />
 	}
 
 	const {

@@ -1,4 +1,4 @@
-import { GoogleMapComp, JobForm, NotFoundJob } from '@/components'
+import { GoogleMapComp, JobForm, NotFound } from '@/components'
 import { RichText } from '@/components/RichText'
 import { client, Job } from '@/lib/contentful'
 
@@ -27,9 +27,8 @@ export default async function Post({
 }) {
 	const { id, slug } = await params
 	const job = await getJob({ slug })
-	console.log(id, job)
 	if (!job || job?.fields?.id !== id) {
-		return <NotFoundJob id={id} />
+		return <NotFound id={id} title="Job" />
 	}
 
 	const {

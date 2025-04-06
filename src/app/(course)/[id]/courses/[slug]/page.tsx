@@ -1,4 +1,4 @@
-import { NotFoundJob } from '@/components'
+import { NotFound } from '@/components'
 import { BookingForm } from '@/components/CoursesList/BookingForm'
 import { CourseContent } from '@/components/CoursesList/CourseContent'
 import { RichText } from '@/components/RichText'
@@ -34,7 +34,7 @@ export default async function Post({
 	const course = await getCourse({ slug })
 
 	if (!course) {
-		return <NotFoundJob id={id} />
+		return <NotFound id={id} title="Course" />
 	}
 
 	const {
