@@ -44,7 +44,9 @@ export function CourseCard({ course }: { course: Course }) {
 									d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
 								/>
 							</svg>
-							<span>{numberOfDays} Days</span>
+							<span>
+								{numberOfDays} {numberOfDays === 1 ? 'Day' : 'Days'}
+							</span>
 						</div>
 						<div className="flex items-center gap-2 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full text-sm font-medium shadow-sm">
 							<svg

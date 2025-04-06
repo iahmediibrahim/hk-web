@@ -101,7 +101,7 @@ export default async function Post({
 							<div className="flex flex-col">
 								<span className="text-sm text-gray-500">Duration</span>
 								<span className="text-base sm:text-lg font-semibold">
-									{numberOfDays} Days
+									{numberOfDays} {numberOfDays === 1 ? 'Day' : 'Days'}
 								</span>
 							</div>
 						</div>
