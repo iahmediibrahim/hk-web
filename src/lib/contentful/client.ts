@@ -111,14 +111,3 @@ export async function getPageHierarchy(): Promise<SimplifiedPage[]> {
 	)
 	return homePage ? homePage.children : rootPages
 }
-
-// get article by id
-export async function getArticlesById(id: string) {
-	const response = await client.getEntries({
-		content_type: 'article',
-		'fields.id': id,
-		select: ['fields.title', 'fields.slug', 'fields.id'],
-	})
-
-	console.log(response)
-}

@@ -129,11 +129,7 @@ const options: Options = {
 		},
 
 		[BLOCKS.EMBEDDED_ENTRY]: (node: Block | Inline) => {
-			console.log('target', node)
-
 			if (node.data.target.sys.contentType.sys.id === 'video') {
-				console.log('target', node)
-
 				const target = node.data.target
 
 				return target?.fields.embedUrl ? (

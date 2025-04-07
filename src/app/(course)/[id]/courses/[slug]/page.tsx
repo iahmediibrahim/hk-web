@@ -6,6 +6,7 @@ import { Course } from '@/types/course'
 import { Text } from '@contentful/rich-text-types'
 import { Metadata } from 'next'
 import Image from 'next/image'
+import Link from 'next/link'
 
 async function getCourse({ slug }: { slug: string }) {
 	try {
@@ -28,9 +29,10 @@ async function getCourse({ slug }: { slug: string }) {
 export async function generateMetadata({
 	params,
 }: {
-	params: { slug: string }
+	params: Promise<{ id: string; slug: string }>
 }): Promise<Metadata> {
-	const course = await getCourse({ slug: params.slug })
+	const { slug } = await params
+	const course = await getCourse({ slug })
 
 	if (!course) {
 		return {
@@ -210,28 +212,28 @@ export default async function Post({
 				<div className="w-full text-center">
 					<p className="text-lg text-gray-700 font-medium">
 						Interested in this course? Please{' '}
-						<a
+						<Link
 							href="/academy/academy-contact"
 							className="text-primary hover:text-primary/80 underline"
 						>
 							contact us
-						</a>{' '}
+						</Link>{' '}
 						to discuss your requirements and make a purchase.
 					</p>
 				</div>
 
 				{/* <div className="w-full">
-					<CartProvider>
-						<BookingForm
-							courseId={slug}
-							prices={{
-								personal: price,
-								group: groupPrice,
-							}}
-							maxAttendees={maxAttendees}
-						/>
-					</CartProvider>
-				</div> */}
+                    <CartProvider>
+                        <BookingForm
+                            courseId={slug}
+                            prices={{
+                                personal: price,
+                                group: groupPrice,
+                            }}
+                            maxAttendees={maxAttendees}
+                        />
+                    </CartProvider>
+                </div> */}
 			</div>
 		</main>
 	)

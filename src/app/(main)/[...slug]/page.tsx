@@ -3,16 +3,12 @@ import { getPageBySlug } from '@/lib/contentful/client'
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
-interface PageParams {
-	slug: string[]
-}
-
 export async function generateMetadata({
 	params,
 }: {
-	params: PageParams
+	params: Promise<{ slug: string[] }>
 }): Promise<Metadata> {
-	const { slug } = params
+	const { slug } = await params
 	const contentType = slug.length === 1 ? 'page' : 'subPage'
 	const page = await getPageBySlug(slug, contentType)
 
@@ -22,7 +18,6 @@ export async function generateMetadata({
 			description: 'The page you are looking for does not exist.',
 		}
 	}
-	console.log('page', page?.fields?.sections[0]?.fields?.paragraph)
 	return {
 		title: page.fields.title || 'Holden Knight',
 		description:
@@ -31,8 +26,12 @@ export async function generateMetadata({
 	}
 }
 
-export default async function Page({ params }: { params: PageParams }) {
-	const { slug } = params
+export default async function Page({
+	params,
+}: {
+	params: Promise<{ slug: string[] }>
+}) {
+	const { slug } = await params
 	const contentType = slug.length === 1 ? 'page' : 'subPage'
 	const page = await getPageBySlug(slug, contentType)
 

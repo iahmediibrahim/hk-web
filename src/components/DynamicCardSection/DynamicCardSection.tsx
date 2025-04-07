@@ -38,7 +38,6 @@ export function DynamicCardSection({
 	locations,
 }: DynamicCardSectionProps) {
 	const shouldUseCarousel = items && items.length > 3
-	console.log(items)
 	return (
 		<div id="about" className="container mx-auto px-4 py-12">
 			<div className="flex flex-col items-center justify-center text-center text-black mb-8">
