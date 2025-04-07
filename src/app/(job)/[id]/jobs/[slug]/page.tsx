@@ -1,6 +1,7 @@
 import { GoogleMapComp, JobForm, NotFound } from '@/components'
 import { RichText } from '@/components/RichText'
 import { client, Job } from '@/lib/contentful'
+import { Metadata } from 'next'
 
 async function getJob({ slug }: { slug: string }) {
 	try {
@@ -17,6 +18,26 @@ async function getJob({ slug }: { slug: string }) {
 	} catch (error) {
 		console.error('Error fetching post:', error)
 		return null
+	}
+}
+
+export async function generateMetadata({
+	params,
+}: {
+	params: Promise<{ id: string; slug: string }>
+}): Promise<Metadata> {
+	const { slug } = await params
+	const job = await getJob({ slug })
+
+	if (!job) {
+		return {
+			title: 'Job Not Found',
+		}
+	}
+
+	return {
+		title: job.fields.title,
+		description: `${job.fields.title} - ${job.fields.location.formattedAddress}`,
 	}
 }
 
@@ -43,7 +64,7 @@ export default async function Post({
 			permanent,
 		},
 	} = job
-	console.log(permanent)
+
 	return (
 		<article className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
 			<div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-16">

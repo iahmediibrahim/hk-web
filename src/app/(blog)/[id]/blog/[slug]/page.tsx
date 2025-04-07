@@ -1,6 +1,7 @@
 import { NotFound } from '@/components'
 import { RichText } from '@/components/RichText'
 import { Article, client } from '@/lib/contentful'
+import { Metadata } from 'next'
 import Image from 'next/image'
 
 async function getPost({ slug }: { slug: string }) {
@@ -20,6 +21,36 @@ async function getPost({ slug }: { slug: string }) {
 		return null
 	}
 }
+
+export async function generateMetadata({
+	params,
+}: {
+	params: Promise<{ slug: string }>
+}): Promise<Metadata> {
+	const { slug } = await params
+	const post = await getPost({ slug })
+
+	if (!post) {
+		return {
+			title: 'Post Not Found',
+		}
+	}
+
+	const {
+		fields: { title, excerpt },
+	} = post
+
+	return {
+		title,
+		description: excerpt,
+		openGraph: {
+			title,
+			description: excerpt,
+			type: 'article',
+		},
+	}
+}
+
 export default async function Post({
 	params,
 }: {

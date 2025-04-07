@@ -5,6 +5,8 @@ import { RichText } from '@/components/RichText'
 import { CartProvider } from '@/hooks/useCart'
 import { client } from '@/lib/contentful'
 import { Course } from '@/types/course'
+import { Text } from '@contentful/rich-text-types'
+import { Metadata } from 'next'
 import Image from 'next/image'
 
 async function getCourse({ slug }: { slug: string }) {
@@ -22,6 +24,28 @@ async function getCourse({ slug }: { slug: string }) {
 	} catch (error) {
 		console.error('Error fetching post:', error)
 		return null
+	}
+}
+
+export async function generateMetadata({
+	params,
+}: {
+	params: { slug: string }
+}): Promise<Metadata> {
+	const course = await getCourse({ slug: params.slug })
+
+	if (!course) {
+		return {
+			title: 'Course Not Found',
+		}
+	}
+
+	return {
+		title: course.fields.title,
+		description:
+			course?.fields.description.content[0].content[0]?.nodeType === 'text'
+				? (course?.fields.description.content[0].content[0] as Text).value
+				: '',
 	}
 }
 

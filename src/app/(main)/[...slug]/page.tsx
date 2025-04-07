@@ -1,23 +1,50 @@
 import { Breadcrumb, SectionResolver } from '@/components'
 import { getPageBySlug } from '@/lib/contentful/client'
+import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
-export default async function Page({
+interface PageParams {
+	slug: string[]
+}
+
+export async function generateMetadata({
 	params,
 }: {
-	params: Promise<{ slug: string[] }>
-}) {
-	const { slug } = await params
+	params: PageParams
+}): Promise<Metadata> {
+	const { slug } = params
 	const contentType = slug.length === 1 ? 'page' : 'subPage'
 	const page = await getPageBySlug(slug, contentType)
+
+	if (!page) {
+		return {
+			title: 'Not Found',
+			description: 'The page you are looking for does not exist.',
+		}
+	}
+	console.log('page', page?.fields?.sections[0]?.fields?.paragraph)
+	return {
+		title: page.fields.title || 'Holden Knight',
+		description:
+			(page?.fields?.sections[0]?.fields?.paragraph as string) ||
+			'Holden Knight website',
+	}
+}
+
+export default async function Page({ params }: { params: PageParams }) {
+	const { slug } = params
+	const contentType = slug.length === 1 ? 'page' : 'subPage'
+	const page = await getPageBySlug(slug, contentType)
+
 	if (!page) {
 		notFound()
 	}
 
 	const colorVar = slug[0] === '' ? 'dark-grey' : slug[0]
-	const hasBanner = page?.fields?.sections?.find(
-		(s) => s.sys?.contentType?.sys?.id === 'heroBanner',
+	const hasBanner = page.fields.sections?.find(
+		(section) => section.sys?.contentType?.sys?.id === 'heroBanner',
 	)
+
 	return (
 		<main>
 			{contentType === 'subPage' && (
@@ -29,7 +56,7 @@ export default async function Page({
 					textColor={hasBanner ? 'white' : 'var(--dark-grey)'}
 				/>
 			)}
-			{page?.fields?.sections?.map((section) => (
+			{page.fields.sections?.map((section) => (
 				<SectionResolver
 					key={section.sys.id}
 					section={section}
