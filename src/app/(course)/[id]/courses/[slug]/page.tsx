@@ -1,8 +1,6 @@
 import { NotFound } from '@/components'
-import { BookingForm } from '@/components/CoursesList/BookingForm'
 import { CourseContent } from '@/components/CoursesList/CourseContent'
 import { RichText } from '@/components/RichText'
-import { CartProvider } from '@/hooks/useCart'
 import { client } from '@/lib/contentful'
 import { Course } from '@/types/course'
 import { Text } from '@contentful/rich-text-types'
@@ -209,7 +207,20 @@ export default async function Post({
 				<div className="w-full text-center text-gray-600 italic">
 					Ps. The course need to fill at least 6 seats start.
 				</div>
-				<div className="w-full">
+				<div className="w-full text-center">
+					<p className="text-lg text-gray-700 font-medium">
+						Interested in this course? Please{' '}
+						<a
+							href="/academy/academy-contact"
+							className="text-primary hover:text-primary/80 underline"
+						>
+							contact us
+						</a>{' '}
+						to discuss your requirements and make a purchase.
+					</p>
+				</div>
+
+				{/* <div className="w-full">
 					<CartProvider>
 						<BookingForm
 							courseId={slug}
@@ -220,7 +231,7 @@ export default async function Post({
 							maxAttendees={maxAttendees}
 						/>
 					</CartProvider>
-				</div>
+				</div> */}
 			</div>
 		</main>
 	)
