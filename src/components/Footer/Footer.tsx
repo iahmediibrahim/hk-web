@@ -124,7 +124,11 @@ export function Footer({ pages }: { pages: SimplifiedPage[] }) {
 				<div className="flex flex-col items-center w-full lg:w-auto">
 					<h4 className="font-semibold mb-4">Our Partners</h4>
 					<div className="grid grid-cols-1">
-						<div className="flex items-center gap-2 mb-2 px-3 py-2 w-[240px] bg-white border rounded-full shadow-sm hover:shadow-md transition-shadow duration-300">
+						<Link
+							href="https://abardo.com/"
+							target="_blank"
+							className="flex items-center gap-2 mb-2 px-3 py-2 w-[240px] bg-white border rounded-full shadow-sm hover:shadow-md transition-shadow duration-300"
+						>
 							<AbardoLogo />
 							<div className="flex flex-col justify-center">
 								<span className="font-semibold text-gray-800">
@@ -138,8 +142,12 @@ export function Footer({ pages }: { pages: SimplifiedPage[] }) {
 									All in one event platform
 								</p>
 							</div>
-						</div>
-						<div className="flex items-center gap-2 mb-2 px-3 py-2 w-[240px] bg-white border rounded-full shadow-sm hover:shadow-md transition-shadow duration-300">
+						</Link>
+						<Link
+							href="https://pat-rec.com/"
+							target="_blank"
+							className="flex items-center gap-2 mb-2 px-3 py-2 w-[240px] bg-white border rounded-full shadow-sm hover:shadow-md transition-shadow duration-300"
+						>
 							<PatrecLogo />
 							<div className="flex flex-col justify-center">
 								<span className="font-semibold text-gray-800">
@@ -153,7 +161,7 @@ export function Footer({ pages }: { pages: SimplifiedPage[] }) {
 									Connecting Healthcare
 								</p>
 							</div>
-						</div>
+						</Link>
 					</div>
 				</div>
 			</div>
