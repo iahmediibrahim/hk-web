@@ -125,7 +125,7 @@ export function HomeCard({
 					)}
 				</div> */}
 				{date && (
-					<div className="text-sm text-gray-500 font-medium text-center">
+					<div className="text-sm mt-4 text-gray-500 font-medium text-center">
 						Article •{' '}
 						{new Date(date).toLocaleDateString('en-US', {
 							month: 'long',
