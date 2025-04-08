@@ -5,6 +5,7 @@ import { InfoStepCard } from '../InfoStepCard'
 import { ListComponent } from '../ListComponent'
 import { PrimaryButton } from '../PrimaryButton'
 import { RichText } from '../RichText/RichText'
+
 export interface cardListProps {
 	fields: {
 		stepNumber: number
@@ -47,21 +48,18 @@ export function InfoSection({
 	tabs,
 }: InfoSectionProps) {
 	const ImageSection = () => (
-		<div
-			className={`md:w-1/2 w-full overflow-hidden shadow-xl  ${
-				imagePosition === 'left' ? 'rounded-l-lg' : 'rounded-r-lg'
-			}`}
-		>
+		<div className={`md:w-1/2 w-full overflow-hidden group  rounded-2xl`}>
 			{img && (
 				<Image
 					className={`w-full h-full ${
-						imageFit ? 'object-contain ' : 'object-cover '
-					} transition-transform duration-500 hover:scale-102`}
+						imageFit ? 'object-contain' : 'object-cover'
+					} transition-all duration-700 group-hover:scale-105 group-hover:rotate-1`}
 					src={'https:' + img.fields.file.url}
 					alt={img.fields.file.fileName}
 					width={1920}
 					height={1080}
 					priority
+					quality={90}
 				/>
 			)}
 		</div>
@@ -71,34 +69,31 @@ export function InfoSection({
 		<div
 			className={`${
 				img ? 'md:w-1/2' : 'w-full'
-			} px-6 py-10 md:px-10 h-full flex flex-col ${
+			} px-8 py-12 md:px-12 h-full flex flex-col ${
 				img ? 'justify-center' : 'items-center'
-			} backdrop-blur-md ${
-				img
-					? imagePosition === 'left'
-						? 'rounded-r-lg'
-						: 'rounded-l-lg'
-					: 'rounded-lg'
-			}`}
+			} backdrop-blur-lg rounded-2xl`}
 			style={{
 				backgroundColor: textBg
 					? `var(--${colorVar}-heroBanner)`
-					: 'rgba(255, 255, 255, 0.95)',
-				boxShadow: '0 4px 6px rgba(0, 0, 0, 0.05)',
+					: 'rgba(255, 255, 255, 0.98)',
 			}}
 		>
 			<div
-				className={`text-lg ${!img && 'text-center'} space-y-8`}
+				className={`text-lg ${!img && 'text-center'} space-y-10`}
 				style={{ color: textBg ? 'white' : 'black' }}
 			>
 				<h2
-					className={`text-2xl sm:text-3xl md:text-4xl font-black tracking-tight leading-tight ${
-						!img && 'max-w-4xl mx-auto'
-					}`}
+					className={`text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-tight ${
+						!img && 'max-w-5xl mx-auto'
+					} animate-fade-in`}
 				>
 					{heading}
 				</h2>
-				{paragraph && <RichText content={paragraph} />}
+				{paragraph && (
+					<div className="prose prose-lg max-w-none">
+						<RichText content={paragraph} />
+					</div>
+				)}
 				{listText && (
 					<ListComponent list={listText} listTextLink={listTextLink} />
 				)}
@@ -112,20 +107,20 @@ export function InfoSection({
 				)}
 				{paragraph2 && (
 					<div
-						className="text-lg opacity-90 leading-relaxed"
+						className="text-xl opacity-90 leading-relaxed"
 						dangerouslySetInnerHTML={{ __html: paragraph2 }}
 					/>
 				)}
 			</div>
 			{cta && (
-				<div className="mt-8 flex md:block justify-center text-center">
+				<div className="mt-10 flex md:block justify-center">
 					<PrimaryButton
 						href={cta?.fields?.linkTo}
 						large={cta?.fields?.large}
 						outlined={cta?.fields?.outlined}
 						className={`${
 							!img ? 'mx-auto' : ''
-						} mt-6 transform transition-all duration-300 hover:scale-105 hover:shadow-lg`}
+						} transform transition-all duration-500 hover:scale-105 hover:shadow-lg`}
 					>
 						{cta.fields?.title}
 					</PrimaryButton>
@@ -135,10 +130,10 @@ export function InfoSection({
 	)
 
 	return (
-		<div className="container mx-auto px-4">
-			<div className="flex flex-wrap">
+		<div className="container mx-auto px-6 py-24">
+			<div className="flex flex-wrap max-w-7xl mx-auto">
 				{/* Desktop layout */}
-				<div className="hidden md:flex w-full">
+				<div className="hidden md:flex w-full gap-8">
 					{img ? (
 						imagePosition === 'left' ? (
 							<>
@@ -157,7 +152,7 @@ export function InfoSection({
 				</div>
 
 				{/* Mobile layout */}
-				<div className="flex flex-col md:hidden w-full gap-6">
+				<div className="flex flex-col md:hidden w-full gap-8">
 					<ContentSection />
 					{img && <ImageSection />}
 				</div>

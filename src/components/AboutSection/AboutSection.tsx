@@ -56,16 +56,16 @@ export function AboutSection({
 					<div className="w-full md:w-[40%] flex justify-center">
 						{img.fields.file.contentType.includes('image') ? (
 							<Image
-								className="w-full max-w-[400px] h-auto object-contain rounded-lg"
+								className="w-full max-w-[600px] h-auto object-contain rounded-lg"
 								src={'https:' + img.fields.file.url}
 								alt={img.fields.file.fileName}
-								width={400}
-								height={300}
+								width={600}
+								height={450}
 								priority
 							/>
 						) : img.fields.file.contentType.includes('video') ? (
 							<video
-								className="w-full max-w-[600px] h-auto"
+								className="w-full max-w-[800px] h-auto"
 								controls
 								autoPlay
 								muted

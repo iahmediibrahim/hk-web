@@ -1,4 +1,4 @@
-import { Navigation, SecondNav } from '@/components'
+import { Footer, Navigation, SecondNav } from '@/components'
 import { getPageHierarchy } from '@/lib/contentful/client'
 import '@/lib/fontawesome'
 import './globals.css'
@@ -24,6 +24,7 @@ export default async function Renderer({
 				</div>
 				{children}
 			</main>
+			<Footer pages={pages} />
 		</>
 	)
 }

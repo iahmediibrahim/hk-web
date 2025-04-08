@@ -46,16 +46,17 @@ export const PrimaryButton = ({
 		<button
 			onClick={handleClick}
 			className={`
+				
           ${
 						disabled
 							? 'opacity-50 cursor-not-allowed'
 							: 'hover:transform hover:scale-105'
 					} 
-          ${large ? 'px-8 py-3 text-base' : 'px-5 py-2 text-sm'} 
-          relative overflow-hidden  font-normal transform-gpu shadow-lg
+          ${large ? 'px-8 py-4 text-base' : 'px-6 py-3 text-sm'} 
+          relative overflow-hidden font-normal transform-gpu shadow-lg
           ease-out duration-300 
           uppercase  
-          border-2 rounded-xl
+          border-2 rounded-full
           flex items-center justify-center gap-2
           ${outlined ? 'bg-transparent' : ''} 
           ${className}
@@ -86,7 +87,7 @@ export const PrimaryButton = ({
 			type={type}
 			{...props}
 		>
-			<span className="relative z-10">{children}</span>
+			{children}
 			<span
 				className="absolute inset-0 bg-black/5 transform origin-left transition-transform duration-300 ease-out"
 				style={{

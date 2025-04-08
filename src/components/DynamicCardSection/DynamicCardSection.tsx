@@ -8,6 +8,7 @@ import { Carousel } from '../Carousel'
 import { CoursesList } from '../CoursesList'
 import { FormId, FormSection } from '../FormSection'
 import { HomeCard, HomeCardFields } from '../HomeCard'
+import RenderListTabs from '../HomeCard/RenderListTabs'
 import { JobItem, JobList } from '../JobList'
 
 type ContentfulEntry<T> = {
@@ -24,6 +25,7 @@ export interface DynamicCardSectionProps {
 	type: string
 	formId: FormId
 	locations?: Location[]
+	tabs?: string[]
 }
 
 export function DynamicCardSection({
@@ -36,8 +38,9 @@ export function DynamicCardSection({
 	images,
 	formId,
 	locations,
+	tabs,
 }: DynamicCardSectionProps) {
-	const shouldUseCarousel = items && items.length > 3
+	const shouldUseCarousel = !tabs && items && items.length > 3
 	return (
 		<div id="about" className="container mx-auto px-4 py-12">
 			<div className="flex flex-col items-center justify-center text-center text-black mb-8">
@@ -78,6 +81,11 @@ export function DynamicCardSection({
 								)
 							})}
 						</Carousel>
+					) : tabs ? (
+						<RenderListTabs
+							tabs={tabs}
+							items={items as Array<ContentfulEntry<HomeCardFields>>}
+						/>
 					) : (
 						<div
 							className={`grid grid-cols-1 gap-8 mx-4 ${

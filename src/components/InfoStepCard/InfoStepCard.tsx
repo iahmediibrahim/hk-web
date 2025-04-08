@@ -4,7 +4,7 @@ import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useState } from 'react'
 import { cardListProps } from '../InfoSection'
-import { PrimaryButton } from '../PrimaryButton'
+import { Tabs } from '../Tabs'
 
 interface InfoStepCardProps {
 	cardList: cardListProps[]
@@ -40,17 +40,7 @@ export function InfoStepCard({
 	return (
 		<div className="container mx-auto px-4">
 			{tabs && (
-				<div className="flex justify-center gap-4 mb-8">
-					{tabs.map((tab, index) => (
-						<PrimaryButton
-							key={index}
-							outlined={activeTab === tab ? false : true}
-							onClick={() => setActiveTab(tab)}
-						>
-							{tab}
-						</PrimaryButton>
-					))}
-				</div>
+				<Tabs tabs={tabs} activeTab={activeTab} onTabChange={setActiveTab} />
 			)}
 			<ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 py-8">
 				{filteredCards.map((item, index) => {
@@ -72,7 +62,6 @@ export function InfoStepCard({
 										backgroundColor: textBg
 											? 'rgba(255, 255, 255, 0.1)'
 											: `rgb(from var(--${colorVar}) r g b / 10%)`,
-
 										color: textBg
 											? 'white'
 											: colorVar

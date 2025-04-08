@@ -1,4 +1,6 @@
 import { ContentfulImage, CTA } from '@/lib/contentful'
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Image from 'next/image'
 import Link from 'next/link'
 import { AbardoLogo } from '../AbardoLogo'
@@ -17,6 +19,7 @@ export interface HomeCardFields {
 	link?: string
 	date?: string
 	isArticle?: boolean
+	type?: string
 }
 
 export function HomeCard({
@@ -25,76 +28,88 @@ export function HomeCard({
 	subTitle,
 	paragraph,
 	primaryButton,
-	secondaryButton,
 	id,
 	link,
 	date,
 	isArticle = false,
 }: HomeCardFields) {
 	const CardContent = () => (
-		<>
-			<div className="relative h-72 sm:h-[400px] w-full overflow-hidden">
+		<div className="flex flex-col items-center h-full group bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 overflow-hidden">
+			<div className="relative aspect-video overflow-hidden rounded-t-3xl group w-full">
 				<Image
 					src={'https:' + img.fields.file.url}
 					alt={title}
-					className="object-cover transform group-hover:scale-105 transition-transform duration-500"
+					className="object-cover transition-all duration-700 will-change-transform group-hover:scale-105 group-hover:filter group-hover:brightness-90"
 					fill
 					sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
 					priority
 				/>
-				<div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-			</div>
-
-			<div className="flex flex-col flex-grow p-8 space-y-6">
-				{id ? (
-					<div className="flex items-start gap-6">
-						<div className="p-3 bg-gray-50/80 backdrop-blur-sm rounded-xl shadow-sm">
-							{id === 'patrec' ? (
-								<PatrecLogo />
-							) : id === 'abardo' ? (
-								<AbardoLogo />
-							) : (
-								<Logo size={48} color={`var(--${id})`} />
-							)}
+				<div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+				<div className="absolute bottom-0 left-0 z-10 w-full transform transition-transform duration-500 translate-y-0">
+					{id ? (
+						<div className="flex items-center justify-center gap-4 backdrop-blur-md bg-white/2 p-5 border-t border-gray-100/20">
+							<div className="rounded-2xl bg-white p-4 shadow-md hover:shadow-lg transition-shadow">
+								{id === 'patrec' ? (
+									<PatrecLogo />
+								) : id === 'abardo' ? (
+									<AbardoLogo />
+								) : (
+									<Logo size={36} color={`var(--${id})`} />
+								)}
+							</div>
+							<div className="flex flex-col">
+								<h3 className="text-2xl font-bold leading-tight text-white mb-1">
+									{title}
+								</h3>
+								{subTitle && (
+									<span className="text-normal font-medium text-gray-100">
+										{subTitle}
+									</span>
+								)}
+							</div>
 						</div>
-						<div className="flex flex-col">
-							<h3 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-br from-gray-900 via-gray-700 to-gray-800">
+					) : (
+						<div className="backdrop-blur-md bg-white/2 p-5 border-t border-gray-100/20 text-center">
+							<h3 className="text-2xl font-bold leading-tight text-white mb-1">
 								{title}
 							</h3>
 							{subTitle && (
-								<span className="text-sm text-gray-600 mt-2 font-medium tracking-wide">
+								<span className="text-normal font-medium text-gray-100">
 									{subTitle}
 								</span>
 							)}
 						</div>
-					</div>
-				) : (
-					<div className="flex flex-col">
-						<h3 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-br from-gray-900 via-gray-700 to-gray-800">
-							{title}
-						</h3>
-						{subTitle && (
-							<span className="text-sm text-gray-600 mt-2 font-medium tracking-wide">
-								{subTitle}
-							</span>
-						)}
-					</div>
-				)}
+					)}
+				</div>
+			</div>
 
+			<div className="relative flex flex-1 flex-col items-center p-5 w-full">
+				{primaryButton && (
+					<PrimaryButton
+						href={primaryButton.fields.linkTo}
+						large={primaryButton.fields.large}
+						outlined={primaryButton.fields.outlined}
+					>
+						<FontAwesomeIcon
+							icon={faArrowRight}
+							color="white"
+							className="text-3xl text-gray-50 transform transition-transform group-hover:translate-x-2 shadow-2xl"
+						/>
+					</PrimaryButton>
+				)}
 				<p
-					className={`text-gray-600 leading-relaxed ${
+					className={`text-gray-600 mt-4 leading-relaxed text-lg text-center ${
 						isArticle ? 'line-clamp-3' : ''
 					}`}
 				>
 					{paragraph}
 				</p>
-				<div className="flex flex-col sm:flex-row gap-4 justify-start items-end mt-auto flex-grow">
+				{/* <div className="mt-auto space-y-3 sm:space-y-0 sm:flex sm:gap-4">
 					{primaryButton && (
 						<PrimaryButton
 							href={primaryButton.fields.linkTo}
 							large={primaryButton.fields.large}
 							outlined={primaryButton.fields.outlined}
-							className="w-full sm:w-auto transition-transform active:scale-95"
 						>
 							{primaryButton.fields.title}
 						</PrimaryButton>
@@ -104,14 +119,13 @@ export function HomeCard({
 							href={secondaryButton.fields.linkTo}
 							large={secondaryButton.fields.large}
 							outlined={secondaryButton.fields.outlined}
-							className="w-full sm:w-auto transition-transform active:scale-95"
 						>
 							{secondaryButton.fields.title}
 						</PrimaryButton>
 					)}
-				</div>
+				</div> */}
 				{date && (
-					<div className="text-sm text-gray-500 font-medium">
+					<div className="text-sm text-gray-500 font-medium text-center">
 						Article •{' '}
 						{new Date(date).toLocaleDateString('en-US', {
 							month: 'long',
@@ -121,19 +135,14 @@ export function HomeCard({
 					</div>
 				)}
 			</div>
-		</>
+		</div>
 	)
 
-	const baseClassName =
-		'group flex flex-col h-full bg-white rounded-2xl shadow-lg hover:shadow-2xl overflow-hidden transition-all duration-300 ease-out hover:-translate-y-2 backdrop-blur-sm border border-gray-100'
-
 	return link ? (
-		<Link href={link} className={baseClassName}>
+		<Link href={link}>
 			<CardContent />
 		</Link>
 	) : (
-		<div className={baseClassName}>
-			<CardContent />
-		</div>
+		<CardContent />
 	)
 }
