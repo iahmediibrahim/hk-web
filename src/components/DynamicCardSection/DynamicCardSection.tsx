@@ -13,6 +13,13 @@ import { JobItem, JobList } from '../JobList'
 
 type ContentfulEntry<T> = {
 	fields: T
+	sys: {
+		contentType: {
+			sys: {
+				id: string
+			}
+		}
+	}
 }
 
 export interface DynamicCardSectionProps {

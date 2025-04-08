@@ -62,6 +62,14 @@ export interface Article {
 		img: ContentfulImage
 		date: EntryFields.Text
 		content: Document
+		type?: string
+	}
+	sys: {
+		contentType: {
+			sys: {
+				id: string
+			}
+		}
 	}
 }
 
