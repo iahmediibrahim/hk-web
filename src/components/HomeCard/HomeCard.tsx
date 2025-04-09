@@ -33,11 +33,12 @@ export function HomeCard({
 	date,
 	isArticle = false,
 }: HomeCardFields) {
+	console.log('isArticle', isArticle)
 	const CardContent = () => (
 		<div className="flex flex-col items-center h-full group bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 overflow-hidden">
 			<div className="relative aspect-video overflow-hidden rounded-t-3xl group w-full">
 				<Image
-					src={'https:' + img.fields.file.url}
+					src={'https:' + img?.fields.file.url}
 					alt={title}
 					className="object-cover transition-all duration-700 will-change-transform group-hover:scale-105 group-hover:filter group-hover:brightness-90"
 					fill
@@ -46,7 +47,7 @@ export function HomeCard({
 				/>
 				<div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 				<div className="absolute bottom-0 left-0 z-10 w-full transform transition-transform duration-500 translate-y-0">
-					{id ? (
+					{id && !isArticle ? (
 						<div className="flex items-center justify-center gap-4 backdrop-blur-md bg-white/2 p-5 border-t border-gray-100/20">
 							<div className="rounded-2xl bg-white p-4 shadow-md hover:shadow-lg transition-shadow">
 								{id === 'patrec' ? (

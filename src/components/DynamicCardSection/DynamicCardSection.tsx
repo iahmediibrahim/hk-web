@@ -1,4 +1,4 @@
-import { ContentfulImage, Location } from '@/lib/contentful'
+import { Article, ContentfulImage, Location } from '@/lib/contentful'
 import { Course } from '@/types/course'
 import { faCheck } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -25,7 +25,9 @@ type ContentfulEntry<T> = {
 export interface DynamicCardSectionProps {
 	title: string
 	paragraph?: string
-	items?: Array<ContentfulEntry<HomeCardFields | CardProps> | JobItem | Course>
+	items?: Array<
+		ContentfulEntry<HomeCardFields | CardProps> | JobItem | Course | Article[]
+	>
 	images?: ContentfulImage[]
 	list?: string[]
 	colorVar: string
@@ -77,7 +79,7 @@ export function DynamicCardSection({
 					{shouldUseCarousel ? (
 						<Carousel colorVar={colorVar}>
 							{items?.map((item, index) => {
-								const { fields } = item
+								const fields = 'fields' in item ? item.fields : item
 								return (
 									<div
 										className="flex-[0_0_100%] min-w-0 md:flex-[0_0_50%] lg:flex-[0_0_33.33%]  px-4 pb-20 pt-4"
@@ -100,8 +102,34 @@ export function DynamicCardSection({
 							}`}
 						>
 							{items?.map((item, index) => {
-								const { fields } = item
-								return <HomeCard key={index} {...(fields as HomeCardFields)} />
+								// Check if item is an Article
+								if (
+									'sys' in item &&
+									item.sys?.contentType?.sys?.id === 'article'
+								) {
+									const article = item as unknown as Article
+									return (
+										<HomeCard
+											key={`home-card-${index}`}
+											isArticle
+											paragraph={article.fields.excerpt}
+											title={article.fields.title}
+											img={article.fields.img}
+											id=""
+											link={`/${article.fields.id}/blog/${article.fields.slug}`}
+											date={article.fields.date}
+										/>
+									)
+								}
+
+								// Handle ContentfulEntry<HomeCardFields>
+								const contentfulEntry = item as ContentfulEntry<HomeCardFields>
+								return (
+									<HomeCard
+										key={`home-card-${index}`}
+										{...contentfulEntry.fields}
+									/>
+								)
 							})}
 						</div>
 					)}
@@ -111,7 +139,7 @@ export function DynamicCardSection({
 					{items?.map((item, index) => (
 						<div key={index} className="flex justify-center">
 							<CardWithIcon
-								{...(item.fields as CardProps)}
+								{...(('fields' in item ? item.fields : item) as CardProps)}
 								colorVar={colorVar}
 							/>
 						</div>
