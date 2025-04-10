@@ -63,6 +63,7 @@ export interface Article {
 		date: EntryFields.Text
 		content: Document
 		type?: string
+		linkTo?: string
 	}
 	sys: {
 		contentType: {

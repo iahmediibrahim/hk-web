@@ -116,7 +116,11 @@ export function DynamicCardSection({
 											title={article.fields.title}
 											img={article.fields.img}
 											id=""
-											link={`/${article.fields.id}/blog/${article.fields.slug}`}
+											link={
+												article?.fields?.linkTo
+													? article?.fields?.linkTo
+													: `/${article.fields.id}/blog/${article.fields.slug}`
+											}
 											date={article.fields.date}
 										/>
 									)
