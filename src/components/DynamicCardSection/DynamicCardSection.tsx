@@ -102,6 +102,32 @@ export function DynamicCardSection({
 							}`}
 						>
 							{items?.map((item, index) => {
+								// Handle ContentfulEntry<HomeCardFields>
+								const contentfulEntry = item as ContentfulEntry<HomeCardFields>
+								return (
+									<HomeCard
+										key={`home-card-${index}`}
+										{...contentfulEntry.fields}
+									/>
+								)
+							})}
+						</div>
+					)}
+				</>
+			) : type === 'articles' ? (
+				<>
+					{tabs ? (
+						<RenderListTabs
+							tabs={tabs}
+							items={items as Array<ContentfulEntry<HomeCardFields>>}
+						/>
+					) : (
+						<div
+							className={`grid grid-cols-1 gap-8 mx-4 ${
+								items && items.length > 2 ? 'lg:grid-cols-3' : 'lg:grid-cols-2'
+							}`}
+						>
+							{items?.map((item, index) => {
 								// Check if item is an Article
 								if (
 									'sys' in item &&
@@ -125,15 +151,6 @@ export function DynamicCardSection({
 										/>
 									)
 								}
-
-								// Handle ContentfulEntry<HomeCardFields>
-								const contentfulEntry = item as ContentfulEntry<HomeCardFields>
-								return (
-									<HomeCard
-										key={`home-card-${index}`}
-										{...contentfulEntry.fields}
-									/>
-								)
 							})}
 						</div>
 					)}

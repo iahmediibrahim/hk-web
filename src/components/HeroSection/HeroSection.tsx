@@ -65,10 +65,9 @@ export function HeroSection({
 			<div className="relative z-20 h-full container mx-auto px-4 py-20">
 				<div className="max-w-2xl h-full flex items-center">
 					<div>
-						<h1 className="text-5xl sm:text-6xl font-bold text-gray-900 mb-6">
+						<h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 md:mb-6 leading-tight">
 							{paragraph}
 						</h1>
-
 						<div className="w-full flex flex-wrap mt-16 gap-3">
 							{cta && (
 								<PrimaryButton
