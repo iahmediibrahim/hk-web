@@ -33,7 +33,6 @@ export function HomeCard({
 	date,
 	isArticle = false,
 }: HomeCardFields) {
-	console.log('isArticle', isArticle)
 	const CardContent = () => (
 		<div className="flex flex-col items-center h-full group bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 overflow-hidden">
 			<div className="relative aspect-video overflow-hidden rounded-t-3xl group w-full">

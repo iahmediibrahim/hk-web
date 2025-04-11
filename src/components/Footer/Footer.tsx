@@ -10,11 +10,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { faArrowUp, faChevronUp } from '@fortawesome/free-solid-svg-icons'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { AbardoLogo } from '../AbardoLogo'
 import { Logo } from '../Logo'
 import { PatrecLogo } from '../PatrecLogo'
 
 export function Footer({ pages }: { pages: SimplifiedPage[] }) {
+	const pathname = usePathname()
 	return (
 		<div
 			className="container mx-auto footer w-full p-5 mt-20"
@@ -37,18 +39,19 @@ export function Footer({ pages }: { pages: SimplifiedPage[] }) {
 				<div className="flex flex-col w-full lg:w-auto items-center lg:items-start">
 					<Logo color="black" size={48} />
 					<div className="flex space-x-4 mt-8">
-						<a
-							href="https://www.facebook.com/profile.php?id=61559533246846"
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							<FontAwesomeIcon
-								icon={faFacebookF}
-								size="lg"
-								className="w-6 h-6 text-gray-900 hover:text-gray-700"
-							/>
-						</a>
-
+						{pathname.includes('education') && (
+							<a
+								href="https://www.facebook.com/profile.php?id=61559533246846"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								<FontAwesomeIcon
+									icon={faFacebookF}
+									size="lg"
+									className="w-6 h-6 text-gray-900 hover:text-gray-700"
+								/>
+							</a>
+						)}
 						<a
 							href="https://x.com/HoldenKnight"
 							target="_blank"
@@ -98,7 +101,7 @@ export function Footer({ pages }: { pages: SimplifiedPage[] }) {
 							>
 								<Link
 									href={`/${page.slug}`}
-									className="block p-2 px-4 text-xl rounded-full hover:text-black font-normal hover:bg-[#edecec] text-center lg:text-left"
+									className="block p-2 px-4 text-xl capitalize rounded-full hover:text-black font-normal hover:bg-[#edecec] text-center lg:text-left"
 								>
 									{page.title}
 								</Link>
@@ -108,7 +111,7 @@ export function Footer({ pages }: { pages: SimplifiedPage[] }) {
 											<Link
 												key={childPage.slug}
 												href={`/${childPage.slug}`}
-												className="block p-2 px-4 rounded-full text-gray-600 hover:text-black hover:font-normal hover:bg-[#edecec]"
+												className="block p-2 px-4 capitalize rounded-full text-gray-600 hover:text-black hover:font-normal hover:bg-[#edecec]"
 											>
 												{childPage.title}
 											</Link>

@@ -24,7 +24,6 @@ const RenderListTabs = ({ tabs, items }: RenderListTabsProps) => {
 	const [activeTab, setActiveTab] = useState(tabs?.[0] ?? '')
 
 	const isArticleList = items[0]?.sys?.contentType?.sys?.id === 'article'
-	console.log('isArticleList', items)
 	// Filtrar los elementos según el tipo de contenido y el tipo de tab activ
 	const filteredItems = items?.filter((item) => {
 		if (isArticleList) {
